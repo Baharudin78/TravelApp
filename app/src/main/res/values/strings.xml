@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TravelApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="masuk">MASUK</string>
+    <string name="sadam">Sadam</string>
+    <string name="bri_bank_rakyat_indonesia">BRI (Bank Rakyat Indonesia)</string>
+    <string name="atm">696601007989532</string>
+    <string name="nama_penerima">Nama Penerima :</string>
+    <string name="nama_bank">Nama Bank :</string>
+    <string name="no_rekening">No Rekening :</string>
+    <string name="pesantransfer">Mohon untuk melakukkan transfer ke Rekening dibawah ini :</string>
+    <string name="pembayaran">Pembayaran</string>
+    <string name="detail">Detail</string>
+    <string name="lanjutkan">lanjutkan</string>
+</resources>

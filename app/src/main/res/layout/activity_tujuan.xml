@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient2"
+    tools:context=".TujuanActivity">
+
+   <ImageView
+       android:id="@+id/imageView4"
+       android:layout_width="match_parent"
+       android:layout_height="130dp"
+       android:layout_marginStart="24dp"
+       android:layout_marginTop="16dp"
+       android:layout_marginEnd="24dp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:srcCompat="@drawable/ic_undraw_loacation" />
+
+   <TextView
+       android:id="@+id/textView8"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="24dp"
+       android:layout_marginTop="16dp"
+       android:textSize="20sp"
+       android:fontFamily="@font/montserrat_bold"
+       android:text="Mau kemana \nkita sekarang ?"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="300dp"
+       android:layout_marginStart="24dp"
+       android:layout_marginTop="8dp"
+       android:orientation="vertical"
+       android:background="@drawable/bg_shape_white"
+       android:layout_marginEnd="24dp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/textView8" >
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+         <TextView
+             android:id="@+id/tv_namaku"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/montserrat_bold"
+             android:layout_marginStart="16dp"
+             android:layout_marginTop="16dp"
+             android:text="Baharudin"
+             android:textSize="20sp"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent" />
+
+
+         <TextView
+             android:id="@+id/tv_darimana"
+             android:layout_width="0dp"
+             android:layout_height="40dp"
+             android:layout_marginStart="16dp"
+             android:layout_marginTop="16dp"
+             android:layout_marginEnd="16dp"
+             android:background="@drawable/shape_retangle_blue"
+             android:drawablePadding="15dp"
+             android:gravity="center_vertical"
+             android:hint="Dari mana ?"
+             android:textColor="@color/colorBlack"
+             android:textSize="20sp"
+             app:drawableStartCompat="@drawable/ic_send"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/tv_namaku" />
+
+         <EditText
+             android:id="@+id/tv_rincian1"
+             android:layout_width="0dp"
+             android:layout_height="40dp"
+             android:layout_marginStart="45dp"
+             android:layout_marginEnd="16dp"
+             android:background="@drawable/shape_retangle_blue"
+             android:drawablePadding="15dp"
+             android:gravity="center_vertical"
+             android:hint="masukkan rincian penjempuan"
+             android:textSize="16sp"
+             android:textColor="@color/colorBlack"
+             app:drawableStartCompat="@drawable/ic_adress"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/tv_darimana" />
+
+         <TextView
+             android:id="@+id/tv_kemana"
+             android:layout_width="0dp"
+             android:layout_height="40dp"
+             android:layout_marginStart="16dp"
+             android:layout_marginTop="16dp"
+             android:layout_marginEnd="16dp"
+             android:background="@drawable/shape_retangle_blue"
+             android:drawablePadding="15dp"
+             android:gravity="center_vertical"
+             android:hint="Mau kemana ?"
+             android:textColor="@color/colorBlack"
+             android:textSize="20sp"
+             app:drawableStartCompat="@drawable/ic_pin"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/tv_rincian1" />
+
+         <EditText
+             android:id="@+id/tv_rincian2"
+             android:layout_width="0dp"
+             android:layout_height="40dp"
+             android:layout_marginStart="45dp"
+             android:textColor="@color/colorBlack"
+             android:layout_marginEnd="16dp"
+             android:background="@drawable/shape_retangle_blue"
+             android:drawablePadding="15dp"
+             android:gravity="center_vertical"
+             android:hint="masukkan rincian turun"
+             android:textSize="16sp"
+             app:drawableStartCompat="@drawable/ic_adress"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/tv_kemana" />
+
+         <TextView
+             android:id="@+id/tv_tanggal"
+             android:layout_width="0dp"
+             android:layout_height="40dp"
+             android:layout_marginStart="16dp"
+             android:layout_marginTop="16dp"
+             android:layout_marginEnd="16dp"
+             android:textColor="@color/colorBlack"
+             android:background="@drawable/shape_retangle_blue"
+             android:drawablePadding="15dp"
+             android:gravity="center_vertical"
+             android:hint=" Mau kapan ?"
+             android:textSize="20sp"
+             app:drawableStartCompat="@drawable/ic_date"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/tv_rincian2" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+   </LinearLayout>
+
+   <Button
+       android:id="@+id/bt_lanjutkan"
+       style="@style/Button"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="24dp"
+       android:layout_marginEnd="24dp"
+       android:layout_marginBottom="16dp"
+       android:text="Lanjutkan"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent" />
+
+   <ImageView
+       android:id="@+id/imageView5"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="24dp"
+       android:layout_marginTop="16dp"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:srcCompat="@drawable/ic_back_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

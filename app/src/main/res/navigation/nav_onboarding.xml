@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_onboarding"
+    app:startDestination="@id/FIrstScreen">
+
+    <fragment
+        android:id="@+id/FIrstScreen"
+        android:name="com.baharudin.travelapp.onboarding.fragmant.FIrstScreen"
+        android:label="fragment_f_irst_screen"
+        tools:layout="@layout/fragment_f_irst_screen" />
+    <fragment
+        android:id="@+id/secondScreen"
+        android:name="com.baharudin.travelapp.onboarding.fragmant.SecondScreen"
+        android:label="fragment_second_screen"
+        tools:layout="@layout/fragment_second_screen" />
+    <fragment
+        android:id="@+id/thirdScreen"
+        android:name="com.baharudin.travelapp.onboarding.fragmant.ThirdScreen"
+        android:label="fragment_third_screen"
+        tools:layout="@layout/fragment_third_screen" />
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.baharudin.travelapp.onboarding.adapter.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_FIrstScreen"
+            app:destination="@id/FIrstScreen" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_secondScreen"
+            app:destination="@id/secondScreen" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_thirdScreen"
+            app:destination="@id/thirdScreen" />
+    </fragment>
+</navigation>

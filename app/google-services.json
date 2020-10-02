@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "930728608698",
+    "firebase_url": "https://travelapp-196e2.firebaseio.com",
+    "project_id": "travelapp-196e2",
+    "storage_bucket": "travelapp-196e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930728608698:android:4f89d77dd352e4341c9383",
+        "android_client_info": {
+          "package_name": "com.baharudin.travelapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930728608698-go6mbln46jt8nd024b9gi8a0o05s3p3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwVQ-xU01V3DGndhMgLHvd7TEwncPULpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930728608698-go6mbln46jt8nd024b9gi8a0o05s3p3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
