@@ -1,5 +1,6 @@
 package com.baharudin.travelapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -37,7 +38,11 @@ class BusActivity : AppCompatActivity() {
                     val travel = getTravel.getValue(Bus::class.java)
                     dataList.add(travel!!)
                 }
-                rv_daftar_mobil.adapter = BusAdaptor(dataList)
+                rv_daftar_mobil.adapter = BusAdaptor(dataList){
+                    val intent = Intent(this@BusActivity,KursiActivity::class.java)
+                    intent.putExtra("data",it)
+                    startActivity(intent)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -83,7 +83,7 @@ class TujuanActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 10){
             if (resultCode == Activity.RESULT_OK){
-                tv_darimana.text = data?.getStringExtra("key")
+                tv_darimana.text = data?.getStringExtra("key") 
             }
         }
         if (requestCode == 13){

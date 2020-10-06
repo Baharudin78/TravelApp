@@ -4,98 +4,48 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import com.baharudin.travelapp.adapter.DestinationAdapter
 import com.baharudin.travelapp.model.Destination
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_destinasi.*
 
 class DestinasiActivity : AppCompatActivity() {
+
+    lateinit var dataRef : DatabaseReference
     private var dataList = ArrayList<Destination>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_destinasi)
 
-        tv_jakarta.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Jakarta")
-            hasil.putExtra("key3","450000")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
+        dataRef = FirebaseDatabase.getInstance().getReference("Destination")
 
-        tv_bandung.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Bandung")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
+        getData()
+        rv_destination.layoutManager = GridLayoutManager(this, 2)
 
-        tv_bekasi.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Bekasi")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
+    }
+    private fun getData(){
+        dataRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                dataList.clear()
 
-        tv_sukabumi.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Sukabumi")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
+                for ( getSnapshot in snapshot.children){
+                    val tempat = getSnapshot.getValue(Destination::class.java)
+                    dataList.add(tempat!!)
+                }
+                rv_destination.adapter = DestinationAdapter(dataList){
+                    val intent = Intent()
+                    intent.putExtra("key1", it.nama.toString())
+                    setResult(Activity.RESULT_OK,intent)
+                    finish()
+                }
+            }
 
-        tv_tangerang.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Tangerang")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@DestinasiActivity, error.message, Toast.LENGTH_SHORT).show()
+            }
 
-        tv_batang.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Batang")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
-
-        tv_cirebon.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Cirebon")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
-
-        tv_jogja.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Jogja")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
-
-        tv_malang.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Malang")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
-
-        tv_surabaya.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Surabaya")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
-
-        tv_pekalongan.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Pekalongan")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
-
-        tv_semarang.setOnClickListener {
-            val hasil = Intent()
-            hasil.putExtra("key1","Semarang")
-            setResult(Activity.RESULT_OK,hasil)
-            finish()
-        }
+        })
     }
 }

@@ -11,7 +11,7 @@ import com.baharudin.travelapp.R
 import com.baharudin.travelapp.model.Bus
 import com.bumptech.glide.Glide
 
-class BusAdaptor (private var data : List<Bus>) : RecyclerView.Adapter<BusAdaptor.MyViewHolder>(){
+class BusAdaptor (private var data : List<Bus>, private  var listener : (Bus) -> Unit) : RecyclerView.Adapter<BusAdaptor.MyViewHolder>(){
 
     lateinit var contextAdapter : Context
 
@@ -20,12 +20,16 @@ class BusAdaptor (private var data : List<Bus>) : RecyclerView.Adapter<BusAdapto
         private var tvNama : TextView = view.findViewById(R.id.tv_nama_travel)
         private var tvFasilitas : TextView = view.findViewById(R.id.tv_fasilitas)
 
-        fun bindItem( data : Bus,context : Context){
+        fun bindItem( data : Bus,context : Context,listener: (Bus) -> Unit){
             tvNama.text = data.nama
             tvFasilitas.text = data.falitas
             Glide.with(context)
                 .load(data.foto)
                 .into(ivFoto)
+
+            itemView.setOnClickListener {
+                listener(data)
+            }
         }
     }
 
@@ -37,7 +41,7 @@ class BusAdaptor (private var data : List<Bus>) : RecyclerView.Adapter<BusAdapto
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bindItem(data[position],contextAdapter)
+        holder.bindItem(data[position],contextAdapter,listener)
     }
 
     override fun getItemCount(): Int = data.size

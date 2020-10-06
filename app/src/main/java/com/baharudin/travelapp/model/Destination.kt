@@ -5,5 +5,5 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Destination (
-    var harga : String =""
+    var nama : String? =""
 ):Parcelable
