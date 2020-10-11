@@ -23,6 +23,12 @@ class LoginActivity : AppCompatActivity() {
         databaseRef = FirebaseDatabase.getInstance().getReference("Users")
         preference = Preference(this)
 
+        preference.setData("onboarding1","1")
+        if (preference.getData("status").equals("1")){
+            finishAffinity()
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
+
         bt_masuk.setOnClickListener {
 
             iUsername = et_email.text.toString()

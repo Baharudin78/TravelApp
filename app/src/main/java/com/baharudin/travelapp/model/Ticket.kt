@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Ticket (
+    var username : String ="",
     var nama : String ? = "",
     var umur : String ? ="",
     var tujuanAwal : String ? ="",

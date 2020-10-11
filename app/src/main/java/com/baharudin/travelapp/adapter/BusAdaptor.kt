@@ -19,10 +19,12 @@ class BusAdaptor (private var data : List<Bus>, private  var listener : (Bus) ->
         private var ivFoto : ImageView = view.findViewById(R.id.iv_foto_travel)
         private var tvNama : TextView = view.findViewById(R.id.tv_nama_travel)
         private var tvFasilitas : TextView = view.findViewById(R.id.tv_fasilitas)
+        private var tvHarga : TextView = view.findViewById(R.id.tv_harga)
 
         fun bindItem( data : Bus,context : Context,listener: (Bus) -> Unit){
             tvNama.text = data.nama
-            tvFasilitas.text = data.falitas
+            tvFasilitas.text = data.fasilitas
+            tvHarga.text = data.harga
             Glide.with(context)
                 .load(data.foto)
                 .into(ivFoto)

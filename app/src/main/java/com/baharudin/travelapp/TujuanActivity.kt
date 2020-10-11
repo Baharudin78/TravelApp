@@ -10,7 +10,6 @@ import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_tujuan.*
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,7 +33,7 @@ class TujuanActivity : AppCompatActivity() {
 
         preference = Preference(this)
         firebaseInstance = FirebaseDatabase.getInstance()
-        dataRef = FirebaseDatabase.getInstance().getReference().child("MyString")
+        dataRef = FirebaseDatabase.getInstance().getReference()
         mDataRef = firebaseInstance.getReference().child("MyTicket")
 
 
@@ -96,6 +95,7 @@ class TujuanActivity : AppCompatActivity() {
     private fun savePlace(iUsername: String,tujuanAwal : String, tujuanAkhir : String, tempatAwal : String, tempatAkhir : String, tanggalBerangkat : String){
 
         val tiket = Ticket()
+        tiket.username = iUsername
         tiket.tujuanAwal = tujuanAwal
         tiket.tempatAwal = tempatAwal
         tiket.tujuanAkhir = tujuanAkhir
@@ -107,11 +107,10 @@ class TujuanActivity : AppCompatActivity() {
     private fun addData(iUsername : String, tiket : Ticket){
         mDataRef.child(iUsername).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-//
-//                val myTiket = dataSnapshot.getValue(Ticket::class.java)
                 mDataRef.child(iUsername).setValue(tiket)
 
                 preference.setData("nama", tiket.nama.toString())
+                preference.setData("username", tiket.username)
                 preference.setData("umur", tiket.umur.toString())
                 preference.setData("tujuanAwal", tiket.tujuanAwal.toString())
                 preference.setData("tempatAwal", tiket.tempatAwal.toString())

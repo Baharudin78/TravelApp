@@ -7,11 +7,15 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baharudin.travelapp.adapter.BusAdaptor
 import com.baharudin.travelapp.model.Bus
+import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_bus.*
 
 class BusActivity : AppCompatActivity() {
+
+//
+//    lateinit var iDestinstion : String
 
     lateinit var mDatabaseRef : DatabaseReference
     lateinit var preference : Preference
@@ -20,12 +24,18 @@ class BusActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bus)
-
+//
+//        iDestinstion = tv_tujuan_akhir.text.toString()
+        val data = intent.getParcelableExtra<Ticket>("data")
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Destination")
+            .child(data?.tempatAwal.toString())
+            .child("Travels")
         preference = Preference(this)
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Travels")
-        tv_tujuan_awal.setText(preference.getData("tujuanAwal"))
-        tv_tujuan_akhir.setText(preference.getData("tempatAwal"))
-        tv_tanggal.setText(preference.getData("tanggal"))
+
+        tv_tujuan_awal.text = data?.tujuanAwal
+        tv_tujuan_akhir.text = data?.tempatAwal
+        tv_tanggal.text = data?.tanggal
+
 
         rv_daftar_mobil.layoutManager = LinearLayoutManager(this)
         getData()
@@ -51,4 +61,5 @@ class BusActivity : AppCompatActivity() {
 
         })
     }
+
 }
