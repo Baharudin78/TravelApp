@@ -50,7 +50,7 @@ class BusActivity : AppCompatActivity() {
                 }
                 rv_daftar_mobil.adapter = BusAdaptor(dataList){
                     val intent = Intent(this@BusActivity,KursiActivity::class.java)
-                    intent.putExtra("data",it)
+                    intent.putExtra("data1",it)
                     startActivity(intent)
                 }
             }

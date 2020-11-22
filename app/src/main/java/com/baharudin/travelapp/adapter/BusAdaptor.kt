@@ -22,7 +22,7 @@ class BusAdaptor (private var data : List<Bus>, private  var listener : (Bus) ->
         private var tvHarga : TextView = view.findViewById(R.id.tv_harga)
 
         fun bindItem( data : Bus,context : Context,listener: (Bus) -> Unit){
-            tvNama.text = data.nama
+            tvNama.text = data.travel
             tvFasilitas.text = data.fasilitas
             tvHarga.text = data.harga
             Glide.with(context)

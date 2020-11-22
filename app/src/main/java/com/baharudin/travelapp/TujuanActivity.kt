@@ -21,6 +21,7 @@ class TujuanActivity : AppCompatActivity() {
     private lateinit var tempatAkhir: String
     private lateinit var tanggalBerangkat: String
     private lateinit var iUsername: String
+    private lateinit var iKemana : String
 
     private lateinit var dataRef : DatabaseReference
     private lateinit var firebaseInstance : FirebaseDatabase
@@ -32,9 +33,11 @@ class TujuanActivity : AppCompatActivity() {
         setContentView(R.layout.activity_tujuan)
 
         preference = Preference(this)
+        iKemana = tv_kemana.text.toString()
+        iUsername = tv_namaku.text.toString()
         firebaseInstance = FirebaseDatabase.getInstance()
         dataRef = FirebaseDatabase.getInstance().getReference()
-        mDataRef = firebaseInstance.getReference().child("MyTicket")
+        mDataRef = firebaseInstance.getReference().child("MyTicket").child(preference.getData("username")!!)
 
 
         tv_namaku.setText(preference.getData("username"))
@@ -101,24 +104,21 @@ class TujuanActivity : AppCompatActivity() {
         tiket.tujuanAkhir = tujuanAkhir
         tiket.tempatAkhir = tempatAkhir
         tiket.tanggal = tanggalBerangkat
-        addData(iUsername,tiket)
+        addData(tempatAwal,tiket)
     }
 
-    private fun addData(iUsername : String, tiket : Ticket){
-        mDataRef.child(iUsername).addValueEventListener(object : ValueEventListener {
+    private fun addData(tempatAwal: String, tiket : Ticket){
+        mDataRef.child(tempatAwal).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                mDataRef.child(iUsername).setValue(tiket)
+                mDataRef.child(tempatAwal).setValue(tiket)
 
-                preference.setData("nama", tiket.nama.toString())
-                preference.setData("username", tiket.username)
-                preference.setData("umur", tiket.umur.toString())
+                preference.setData("username", tiket.username).toString()
                 preference.setData("tujuanAwal", tiket.tujuanAwal.toString())
                 preference.setData("tempatAwal", tiket.tempatAwal.toString())
                 preference.setData("tujuanAkhir", tiket.tujuanAkhir.toString())
                 preference.setData("tempatAkhir", tiket.tempatAkhir.toString())
                 preference.setData("tanggal", tiket.tanggal.toString())
-                preference.setData("kursi", tiket.kursi.toString())
-                preference.setData("travel",tiket.travel.toString())
+
 
                 val intent = Intent(this@TujuanActivity, BusActivity::class.java)
                 intent.putExtra("data", tiket)

@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="200dp"
         android:layout_height="440dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="150dp"
         android:background="@drawable/bt_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,7 @@
                 app:srcCompat="@drawable/ic_seat_able" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/a1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="39dp"
@@ -140,7 +140,7 @@
                 app:srcCompat="@drawable/ic_seat_full" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/a2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -153,7 +153,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_a2" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/a3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -162,11 +162,11 @@
                 android:text="A3"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/textView13"
+                app:layout_constraintEnd_toStartOf="@+id/a2"
                 app:layout_constraintTop_toBottomOf="@+id/iv_a3" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/a4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="39dp"
@@ -179,7 +179,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_a4" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/a5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -192,7 +192,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_a5" />
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/a6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -201,11 +201,11 @@
                 android:text="A6"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/textView16"
+                app:layout_constraintEnd_toStartOf="@+id/a5"
                 app:layout_constraintTop_toBottomOf="@+id/iv_a6" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/a7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="39dp"
@@ -265,7 +265,7 @@
                 app:srcCompat="@drawable/ic_minus" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/a8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -278,7 +278,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_a8" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/a9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -287,7 +287,7 @@
                 android:text="A9"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/textView21"
+                app:layout_constraintEnd_toStartOf="@+id/a8"
                 app:layout_constraintTop_toBottomOf="@+id/iv_a9" />
 
             <TextView
@@ -320,15 +320,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:text="Travel L300"
-        android:fontFamily="@font/montserrat_bold"
-        android:textSize="20sp"
+        android:fontFamily="@font/roboto"
+        tools:text="Travel L300"
         android:textColor="@color/colorBlack"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Button
         android:id="@+id/bt_kursi_next"
@@ -339,8 +340,58 @@
         android:layout_marginBottom="16dp"
         android:text="@string/lanjutkan"
         style="@style/Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Pilih Kursi Anda"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_dari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/roboto"
+        android:text="TextView"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_bus" />
+
+    <TextView
+        android:id="@+id/tv_tujuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto"
+        android:text="TextView"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_bus" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_bus"
+        app:srcCompat="@drawable/ic_arrow_right_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

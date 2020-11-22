@@ -2,13 +2,12 @@ package com.baharudin.travelapp.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.baharudin.travelapp.R
 import com.baharudin.travelapp.TujuanActivity
-import com.baharudin.travelapp.model.Users
 import com.baharudin.travelapp.utils.Preference
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -19,9 +18,10 @@ import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class Dashboard : Fragment() {
 
-    lateinit var preference : Preference
+
+    private lateinit var preference : Preference
     lateinit var dataRef : DatabaseReference
-    private var user = Users()
+
 
 
     override fun onCreateView(
@@ -37,8 +37,8 @@ class Dashboard : Fragment() {
 
         dataRef = FirebaseDatabase.getInstance().getReference("Users")
         preference = Preference(requireActivity().applicationContext)
-        
-       tv_nama.setText(preference.getData("username"))
+
+        tv_nama.text = preference.getData("username")
 
         if (preference.getData("foto").equals("")){
             iv_foto.setImageResource(R.drawable.ic_person)

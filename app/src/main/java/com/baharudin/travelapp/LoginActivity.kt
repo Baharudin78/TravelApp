@@ -67,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
                         preference.setData("email", user.email.toString())
                         preference.setData("foto", user.foto.toString())
                         preference.setData("nohp", user.nohp.toString())
+                        preference.setData("status", "1")
                         finishAffinity()
                         startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                     } else {
