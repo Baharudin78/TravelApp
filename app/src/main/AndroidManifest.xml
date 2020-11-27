@@ -24,7 +24,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DestinasiActivity"></activity>
+        <activity android:name=".PersonAct"></activity>
+        <activity android:name=".DestinasiActivity" />
         <activity android:name=".TujuanAwalActivity" />
         <activity android:name=".CheckoutActivity" />
         <activity android:name=".IdentityActivity" />

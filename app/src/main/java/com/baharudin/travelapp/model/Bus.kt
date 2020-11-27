@@ -5,10 +5,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Bus (
-    var travel : String = "",
-    var kursi : String = "",
-    var fasilitas : String ="",
-    var foto : String ="",
-    var harga : String ="",
-
+    var kursi : String?="" ,
+    var harga : String?="",
+    var travel : String? ="",
+    var fasilitas : String? ="",
+    var foto : String? =""
 ): Parcelable

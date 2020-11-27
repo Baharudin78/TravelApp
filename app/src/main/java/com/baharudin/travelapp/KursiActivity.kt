@@ -3,13 +3,9 @@ package com.baharudin.travelapp
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.baharudin.travelapp.model.Bus
-import com.baharudin.travelapp.model.Kursi
-import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
-import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_kursi.*
 
 class KursiActivity : AppCompatActivity() {
@@ -27,12 +23,7 @@ class KursiActivity : AppCompatActivity() {
     private var total : Int = 0
     private var dataList = ArrayList<Bus>()
 
-
     lateinit var preference : Preference
-
-    private lateinit var kursi: Kursi
-    private lateinit var tiket: Ticket
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +49,7 @@ class KursiActivity : AppCompatActivity() {
                 total += 1
                 beliTiket(total)
 
-                val data = Bus(data?.harga.toString(),"A1")
+                val data = Bus("A1",data!!.harga.toString())
                 dataList.add(data)
             }
         }
@@ -75,7 +66,7 @@ class KursiActivity : AppCompatActivity() {
                 total += 1
                 beliTiket(total)
 
-                val data = Bus(data?.harga.toString(),"A2")
+                val data = Bus("A2",data!!.harga.toString())
                 dataList.add(data)
             }
         }
@@ -91,7 +82,7 @@ class KursiActivity : AppCompatActivity() {
                 total += 1
                 beliTiket(total)
 
-                val data = Bus(data?.harga.toString(),"A3")
+                val data = Bus("A3",data!!.harga.toString())
                 dataList.add(data)
             }
         }
@@ -107,7 +98,7 @@ class KursiActivity : AppCompatActivity() {
                 total += 1
                 beliTiket(total)
 
-                val data = Bus(data?.harga.toString(),"A4")
+                val data = Bus("A4",data!!.harga.toString())
                 dataList.add(data)
             }
         }
@@ -123,7 +114,7 @@ class KursiActivity : AppCompatActivity() {
                 total += 1
                 beliTiket(total)
 
-                val data = Bus(data?.harga.toString(),"A5")
+                val data = Bus("A5",data!!.harga.toString())
                 dataList.add(data)
             }
         }
@@ -139,7 +130,7 @@ class KursiActivity : AppCompatActivity() {
                 total += 1
                 beliTiket(total)
 
-                val data = Bus(data?.harga.toString(),"A6")
+                val data = Bus("A6",data!!.harga.toString())
                 dataList.add(data)
             }
         }
@@ -155,7 +146,7 @@ class KursiActivity : AppCompatActivity() {
                 total += 1
                 beliTiket(total)
 
-                val data = Bus(data?.harga.toString(),"A7")
+                val data = Bus("A7",data!!.harga.toString())
                 dataList.add(data)
             }
         }
@@ -171,7 +162,7 @@ class KursiActivity : AppCompatActivity() {
                 total += 1
                 beliTiket(total)
 
-                val data = Bus(data?.harga.toString(),"A8")
+                val data = Bus("A8",data!!.harga.toString())
                 dataList.add(data)
             }
         }
@@ -187,12 +178,12 @@ class KursiActivity : AppCompatActivity() {
                 total += 1
                 beliTiket(total)
 
-                val data = Bus(data?.harga.toString(),"A9")
+                val data = Bus("A9",data!!.harga.toString())
                 dataList.add(data)
             }
         }
         bt_kursi_next.setOnClickListener {
-            val intent = Intent(this,IdentityActivity::class.java).putExtra("data",dataList).putExtra("datas",data).putExtra("total",total)
+            val intent = Intent(this,CheckoutActivity::class.java).putExtra("data",dataList).putExtra("datas",data)
             startActivity(intent)
 
         }
