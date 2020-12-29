@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.baharudin.travelapp.databinding.ActivityTujuanBinding
 import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.*
@@ -27,32 +28,34 @@ class TujuanActivity : AppCompatActivity() {
     private lateinit var firebaseInstance : FirebaseDatabase
     private lateinit var mDataRef : DatabaseReference
     lateinit var preference : Preference
+    lateinit var binding : ActivityTujuanBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tujuan)
+        binding = ActivityTujuanBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         preference = Preference(this)
-        iKemana = tv_kemana.text.toString()
-        iUsername = tv_namaku.text.toString()
+        iKemana = binding.tvKemana.text.toString()
+        iUsername = binding.tvNamaku.text.toString()
         firebaseInstance = FirebaseDatabase.getInstance()
         dataRef = FirebaseDatabase.getInstance().getReference()
         mDataRef = firebaseInstance.getReference().child("MyTicket").child(preference.getData("username")!!)
 
 
-        tv_namaku.setText(preference.getData("username"))
-        tv_darimana.setOnClickListener {
+        binding.tvNamaku.setText(preference.getData("username"))
+        binding.tvDarimana.setOnClickListener {
             val intent = Intent(this,TujuanAwalActivity::class.java)
             startActivityForResult(intent, 10)
         }
-        tv_kemana.setOnClickListener {
+        binding.tvKemana.setOnClickListener {
             val intent2 = Intent(this,DestinasiActivity::class.java)
             startActivityForResult(intent2,13)
         }
 
-        bt_lanjutkan.setOnClickListener {
-            iUsername = tv_namaku.text.toString()
-            tujuanAwal = tv_darimana.text.toString()
+        binding.btLanjutkan.setOnClickListener {
+            iUsername = binding.tvNamaku.text.toString()
+            tujuanAwal = binding.tvDarimana.text.toString()
             tempatAwal = tv_rincian1.text.toString()
             tujuanAkhir = tv_kemana.text.toString()
             tempatAkhir = tv_rincian2.text.toString()

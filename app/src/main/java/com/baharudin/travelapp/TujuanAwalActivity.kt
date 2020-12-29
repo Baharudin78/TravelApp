@@ -7,22 +7,24 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.baharudin.travelapp.adapter.DestinationAdapter
+import com.baharudin.travelapp.databinding.ActivityTujuanAwalBinding
 import com.baharudin.travelapp.model.Destination
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_tujuan_awal.*
 
 class TujuanAwalActivity : AppCompatActivity() {
 
     private var dataList = ArrayList<Destination>()
     lateinit var dataRef : DatabaseReference
+    lateinit var binding : ActivityTujuanAwalBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tujuan_awal)
+        binding = ActivityTujuanAwalBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         dataRef = FirebaseDatabase.getInstance().getReference("Address")
         getData()
-        rv_alamat.layoutManager = GridLayoutManager(this,2)
+        binding.rvAlamat.layoutManager = GridLayoutManager(this,2)
 
     }
     private fun getData(){
@@ -34,7 +36,7 @@ class TujuanAwalActivity : AppCompatActivity() {
                     val tempat = getSnapshot.getValue(Destination::class.java)
                     dataList.add(tempat!!)
                 }
-                rv_alamat.adapter = DestinationAdapter(dataList){
+                binding.rvAlamat.adapter = DestinationAdapter(dataList){
                     val intent = Intent()
                     intent.putExtra("key",it.nama.toString())
                     setResult(Activity.RESULT_OK,intent)

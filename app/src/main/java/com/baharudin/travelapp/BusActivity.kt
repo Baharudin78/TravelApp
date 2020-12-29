@@ -6,24 +6,23 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baharudin.travelapp.adapter.BusAdaptor
+import com.baharudin.travelapp.databinding.ActivityBusBinding
 import com.baharudin.travelapp.model.Bus
 import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_bus.*
 
 class BusActivity : AppCompatActivity() {
-
-//
-//    lateinit var iDestinstion : String
 
     lateinit var mDatabaseRef : DatabaseReference
     lateinit var preference : Preference
     var dataList = ArrayList<Bus>()
+    lateinit var binding : ActivityBusBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bus)
+        binding = ActivityBusBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 //
 //        iDestinstion = tv_tujuan_akhir.text.toString()
         val data = intent.getParcelableExtra<Ticket>("data")
@@ -32,12 +31,12 @@ class BusActivity : AppCompatActivity() {
             .child("Travels")
         preference = Preference(this)
 
-        tv_tujuan_awal.text = data?.tujuanAwal
-        tv_tujuan_akhir.text = data?.tempatAwal
-        tv_tanggal.text = data?.tanggal
+        binding.tvTujuanAwal.text = data?.tujuanAwal
+        binding.tvTujuanAkhir.text = data?.tempatAwal
+        binding.tvTanggal.text = data?.tanggal
 
 
-        rv_daftar_mobil.layoutManager = LinearLayoutManager(this)
+        binding.rvDaftarMobil.layoutManager = LinearLayoutManager(this)
         getData()
     }
     private fun getData (){
@@ -48,7 +47,7 @@ class BusActivity : AppCompatActivity() {
                     val travel = getTravel.getValue(Bus::class.java)
                     dataList.add(travel!!)
                 }
-                rv_daftar_mobil.adapter = BusAdaptor(dataList){
+                binding.rvDaftarMobil.adapter = BusAdaptor(dataList){
                     val intent = Intent(this@BusActivity,KursiActivity::class.java)
                     intent.putExtra("data1",it)
                     startActivity(intent)

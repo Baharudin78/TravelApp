@@ -1,5 +1,7 @@
 package com.baharudin.travelapp
 
+import com.baharudin.travelapp.CheckoutActivity
+import com.baharudin.travelapp.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -183,7 +185,7 @@ class KursiActivity : AppCompatActivity() {
             }
         }
         bt_kursi_next.setOnClickListener {
-            val intent = Intent(this,CheckoutActivity::class.java).putExtra("data",dataList).putExtra("datas",data)
+            val intent = Intent(this, CheckoutActivity::class.java).putExtra("data",dataList).putExtra("datas",data)
             startActivity(intent)
 
         }
