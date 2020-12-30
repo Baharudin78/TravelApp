@@ -1,24 +1,25 @@
 package com.baharudin.travelapp.onboarding.adapter
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.baharudin.travelapp.R
+import androidx.fragment.app.Fragment
+import com.baharudin.travelapp.databinding.FragmentViewPagerBinding
 import com.baharudin.travelapp.onboarding.fragmant.FIrstScreen
 import com.baharudin.travelapp.onboarding.fragmant.SecondScreen
 import com.baharudin.travelapp.onboarding.fragmant.ThirdScreen
-import kotlinx.android.synthetic.main.fragment_view_pager.view.*
 
 class ViewPagerFragment : Fragment() {
-
+    private var _binding : FragmentViewPagerBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_view_pager, container, false)
+        _binding = FragmentViewPagerBinding.inflate(layoutInflater,container,false)
+        val view = binding.root
 
         val fragmentList = arrayListOf<Fragment>(
             FIrstScreen(),
@@ -32,7 +33,7 @@ class ViewPagerFragment : Fragment() {
             lifecycle
         )
 
-        view.viewPagerr.adapter = adapter
+        binding.viewPagerr.adapter = adapter
 
         return view
     }

@@ -4,10 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.baharudin.travelapp.databinding.ActivityLoginBinding
 import com.baharudin.travelapp.model.Users
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -15,10 +15,12 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var iPassword : String
     private lateinit var databaseRef : DatabaseReference
     private lateinit var preference: Preference
+    lateinit var binding : ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         databaseRef = FirebaseDatabase.getInstance().getReference("Users")
         preference = Preference(this)
@@ -29,23 +31,23 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this,HomeActivity::class.java))
         }
 
-        bt_masuk.setOnClickListener {
+        binding.btMasuk.setOnClickListener {
 
-            iUsername = et_email.text.toString()
-            iPassword = et_password.text.toString()
+            iUsername = binding.etEmail.text.toString()
+            iPassword = binding.etPassword.text.toString()
 
             if (iUsername == ""){
-                et_email.error ="silahkan isi username"
-                et_email.requestFocus()
+                binding.etEmail.error ="silahkan isi username"
+                binding.etEmail.requestFocus()
             }else if ( iPassword == ""){
-                et_password.error = "silahkan isi password anda"
-                et_password.requestFocus()
+                binding.etPassword.error = "silahkan isi password anda"
+                binding.etPassword.requestFocus()
             }else{
                 getUser(iUsername,iPassword)
             }
 
         }
-        bt_daftar.setOnClickListener {
+        binding.btDaftar.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
         }
     }

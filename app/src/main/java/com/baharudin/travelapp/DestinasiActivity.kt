@@ -7,22 +7,24 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.baharudin.travelapp.adapter.DestinationAdapter
+import com.baharudin.travelapp.databinding.ActivityDestinasiBinding
 import com.baharudin.travelapp.model.Destination
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_destinasi.*
 
 class DestinasiActivity : AppCompatActivity() {
 
     lateinit var dataRef : DatabaseReference
     private var dataList = ArrayList<Destination>()
+    lateinit var binding : ActivityDestinasiBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_destinasi)
+        binding = ActivityDestinasiBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         dataRef = FirebaseDatabase.getInstance().getReference("Destination")
 
         getData()
-        rv_destination.layoutManager = GridLayoutManager(this, 2)
+        binding.rvDestination.layoutManager = GridLayoutManager(this, 2)
 
     }
     private fun getData(){
@@ -34,7 +36,7 @@ class DestinasiActivity : AppCompatActivity() {
                     val tempat = getSnapshot.getValue(Destination::class.java)
                     dataList.add(tempat!!)
                 }
-                rv_destination.adapter = DestinationAdapter(dataList){
+                binding.rvDestination.adapter = DestinationAdapter(dataList){
                     val intent = Intent()
                     intent.putExtra("key1", it.nama.toString())
                     setResult(Activity.RESULT_OK,intent)

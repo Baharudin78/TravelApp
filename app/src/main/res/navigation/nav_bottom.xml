@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/dashboard"
         android:name="com.baharudin.travelapp.fragment.Dashboard"
-        android:label="fragment_dashboard"
+        android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/tiket"
         android:name="com.baharudin.travelapp.fragment.Tiket"
-        android:label="fragment_tiket"
+        android:label="Tiket"
         tools:layout="@layout/fragment_tiket" />
     <fragment
         android:id="@+id/setting2"
         android:name="com.baharudin.travelapp.fragment.Setting"
-        android:label="fragment_setting"
+        android:label="Setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>

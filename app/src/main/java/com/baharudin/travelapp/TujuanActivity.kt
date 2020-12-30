@@ -10,7 +10,6 @@ import com.baharudin.travelapp.databinding.ActivityTujuanBinding
 import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_tujuan.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -56,14 +55,14 @@ class TujuanActivity : AppCompatActivity() {
         binding.btLanjutkan.setOnClickListener {
             iUsername = binding.tvNamaku.text.toString()
             tujuanAwal = binding.tvDarimana.text.toString()
-            tempatAwal = tv_rincian1.text.toString()
-            tujuanAkhir = tv_kemana.text.toString()
-            tempatAkhir = tv_rincian2.text.toString()
-            tanggalBerangkat = tv_tanggal.text.toString()
+            tempatAwal = binding.tvRincian1.text.toString()
+            tujuanAkhir = binding.tvKemana.text.toString()
+            tempatAkhir = binding.tvRincian2.text.toString()
+            tanggalBerangkat = binding.tvTanggal.text.toString()
             savePlace(iUsername,tujuanAwal,tempatAwal,tujuanAkhir,tempatAkhir,tanggalBerangkat)
         }
 
-        tv_tanggal.setOnClickListener {
+        binding.tvTanggal.setOnClickListener {
             val newCalendar: Calendar = Calendar.getInstance()
 
             val datePickerDialog = DatePickerDialog(
@@ -72,7 +71,7 @@ class TujuanActivity : AppCompatActivity() {
                     val newDate: Calendar = Calendar.getInstance()
                     newDate.set(year, monthOfYear, dayOfMonth)
                     val dateFormatter = SimpleDateFormat("dd-MM-yyyy", Locale.US)
-                    tv_tanggal.setText(dateFormatter.format(newDate.getTime()))
+                    binding.tvTanggal.setText(dateFormatter.format(newDate.getTime()))
                 },
                 newCalendar.get(Calendar.YEAR),
                 newCalendar.get(Calendar.MONTH),
@@ -88,12 +87,12 @@ class TujuanActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 10){
             if (resultCode == Activity.RESULT_OK){
-                tv_darimana.text = data?.getStringExtra("key") 
+                binding.tvDarimana.text = data?.getStringExtra("key")
             }
         }
         if (requestCode == 13){
             if (resultCode == Activity.RESULT_OK){
-                tv_kemana.text = data?.getStringExtra("key1")
+                binding.tvKemana.text = data?.getStringExtra("key1")
             }
         }
     }

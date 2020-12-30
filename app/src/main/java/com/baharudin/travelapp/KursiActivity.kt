@@ -6,12 +6,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.baharudin.travelapp.databinding.ActivityKursiBinding
 import com.baharudin.travelapp.model.Bus
 import com.baharudin.travelapp.utils.Preference
-import kotlinx.android.synthetic.main.activity_kursi.*
 
 class KursiActivity : AppCompatActivity() {
-
 
     private var statusA1 : Boolean = false
     private var statusA2 : Boolean = false
@@ -24,29 +23,30 @@ class KursiActivity : AppCompatActivity() {
     private var statusA9 : Boolean = false
     private var total : Int = 0
     private var dataList = ArrayList<Bus>()
-
+    lateinit var binding : ActivityKursiBinding
     lateinit var preference : Preference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_kursi)
+        binding = ActivityKursiBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
         preference = Preference(this)
         val data = intent.getParcelableExtra<Bus>("data1")
-        tv_nama_bus.text = data?.travel
-        tv_dari.setText(preference.getData("tujuanAwal"))
-        tv_tujuan.setText(preference.getData("tempatAwal"))
+        binding.tvNamaBus.text = data?.travel
+        binding.tvDari.setText(preference.getData("tujuanAwal"))
+        binding.tvTujuan.setText(preference.getData("tempatAwal"))
 
 
-        iv_a1.setOnClickListener {
+        binding.ivA1.setOnClickListener {
             if (statusA1){
-                iv_a1.setImageResource(R.drawable.ic_seat_able)
+                binding.ivA1.setImageResource(R.drawable.ic_seat_able)
                 statusA1 = false
                 total -= 1
                 beliTiket(total)
             }else{
-                iv_a1.setImageResource(R.drawable.ic_seat_select)
+                binding.ivA1.setImageResource(R.drawable.ic_seat_select)
                 statusA1 = true
                 total += 1
                 beliTiket(total)
@@ -56,14 +56,14 @@ class KursiActivity : AppCompatActivity() {
             }
         }
 
-        iv_a2.setOnClickListener {
+        binding.ivA2.setOnClickListener {
             if (statusA2){
-                iv_a2.setImageResource(R.drawable.ic_seat_able)
+                binding.ivA2.setImageResource(R.drawable.ic_seat_able)
                 statusA2 = false
                 total -= 1
                 beliTiket(total)
             }else{
-                iv_a2.setImageResource(R.drawable.ic_seat_select)
+                binding.ivA2.setImageResource(R.drawable.ic_seat_select)
                 statusA2 = true
                 total += 1
                 beliTiket(total)
@@ -72,14 +72,14 @@ class KursiActivity : AppCompatActivity() {
                 dataList.add(data)
             }
         }
-        iv_a3.setOnClickListener {
+        binding.ivA3.setOnClickListener {
             if (statusA3){
-                iv_a3.setImageResource(R.drawable.ic_seat_able)
+                binding.ivA3.setImageResource(R.drawable.ic_seat_able)
                 statusA3 = false
                 total -= 1
                 beliTiket(total)
             }else{
-                iv_a3.setImageResource(R.drawable.ic_seat_select)
+                binding.ivA3.setImageResource(R.drawable.ic_seat_select)
                 statusA3 = true
                 total += 1
                 beliTiket(total)
@@ -88,14 +88,14 @@ class KursiActivity : AppCompatActivity() {
                 dataList.add(data)
             }
         }
-        iv_a4.setOnClickListener {
+        binding.ivA4.setOnClickListener {
             if (statusA4){
-                iv_a4.setImageResource(R.drawable.ic_seat_able)
+                binding.ivA4.setImageResource(R.drawable.ic_seat_able)
                 statusA4 = false
                 total -= 1
                 beliTiket(total)
             }else{
-                iv_a4.setImageResource(R.drawable.ic_seat_select)
+                binding.ivA4.setImageResource(R.drawable.ic_seat_select)
                 statusA4 = true
                 total += 1
                 beliTiket(total)
@@ -104,14 +104,14 @@ class KursiActivity : AppCompatActivity() {
                 dataList.add(data)
             }
         }
-        iv_a5.setOnClickListener {
+        binding.ivA5.setOnClickListener {
             if (statusA5){
-                iv_a5.setImageResource(R.drawable.ic_seat_able)
+                binding.ivA5.setImageResource(R.drawable.ic_seat_able)
                 statusA5 = false
                 total -= 1
                 beliTiket(total)
             }else{
-                iv_a5.setImageResource(R.drawable.ic_seat_select)
+                binding.ivA5.setImageResource(R.drawable.ic_seat_select)
                 statusA5 = true
                 total += 1
                 beliTiket(total)
@@ -120,14 +120,14 @@ class KursiActivity : AppCompatActivity() {
                 dataList.add(data)
             }
         }
-        iv_a6.setOnClickListener {
+        binding.ivA6.setOnClickListener {
             if (statusA6){
-                iv_a6.setImageResource(R.drawable.ic_seat_able)
+                binding.ivA6.setImageResource(R.drawable.ic_seat_able)
                 statusA6 = false
                 total -= 1
                 beliTiket(total)
             }else{
-                iv_a6.setImageResource(R.drawable.ic_seat_select)
+                binding.ivA6.setImageResource(R.drawable.ic_seat_select)
                 statusA6 = true
                 total += 1
                 beliTiket(total)
@@ -136,14 +136,14 @@ class KursiActivity : AppCompatActivity() {
                 dataList.add(data)
             }
         }
-        iv_a7.setOnClickListener {
+        binding.ivA7.setOnClickListener {
             if (statusA7){
-                iv_a7.setImageResource(R.drawable.ic_seat_able)
+                binding.ivA7.setImageResource(R.drawable.ic_seat_able)
                 statusA7 = false
                 total -= 1
                 beliTiket(total)
             }else{
-                iv_a7.setImageResource(R.drawable.ic_seat_select)
+                binding.ivA7.setImageResource(R.drawable.ic_seat_select)
                 statusA7 = true
                 total += 1
                 beliTiket(total)
@@ -152,14 +152,14 @@ class KursiActivity : AppCompatActivity() {
                 dataList.add(data)
             }
         }
-        iv_a8.setOnClickListener {
+        binding.ivA8.setOnClickListener {
             if (statusA8){
-                iv_a8.setImageResource(R.drawable.ic_seat_able)
+                binding.ivA8.setImageResource(R.drawable.ic_seat_able)
                 statusA8 = false
                 total -= 1
                 beliTiket(total)
             }else{
-                iv_a8.setImageResource(R.drawable.ic_seat_select)
+                binding.ivA8.setImageResource(R.drawable.ic_seat_select)
                 statusA8 = true
                 total += 1
                 beliTiket(total)
@@ -168,14 +168,14 @@ class KursiActivity : AppCompatActivity() {
                 dataList.add(data)
             }
         }
-        iv_a9.setOnClickListener {
+        binding.ivA9.setOnClickListener {
             if (statusA9){
-                iv_a9.setImageResource(R.drawable.ic_seat_able)
+                binding.ivA9.setImageResource(R.drawable.ic_seat_able)
                 statusA9 = false
                 total -= 1
                 beliTiket(total)
             }else{
-                iv_a9.setImageResource(R.drawable.ic_seat_select)
+                binding.ivA9.setImageResource(R.drawable.ic_seat_select)
                 statusA9 = true
                 total += 1
                 beliTiket(total)
@@ -184,7 +184,7 @@ class KursiActivity : AppCompatActivity() {
                 dataList.add(data)
             }
         }
-        bt_kursi_next.setOnClickListener {
+        binding.btKursiNext.setOnClickListener {
             val intent = Intent(this, CheckoutActivity::class.java).putExtra("data",dataList).putExtra("datas",data)
             startActivity(intent)
 
@@ -193,11 +193,11 @@ class KursiActivity : AppCompatActivity() {
 
     private fun beliTiket(total : Int){
         if (total == 0){
-            bt_kursi_next.setText("Lanjutkan")
-            bt_kursi_next.visibility = View.INVISIBLE
+            binding.btKursiNext.setText("Lanjutkan")
+            binding.btKursiNext.visibility = View.INVISIBLE
         }else{
-            bt_kursi_next.setText("Beli Tiket (" + total + ")")
-            bt_kursi_next.visibility = View.VISIBLE
+            binding.btKursiNext.setText("Beli Tiket (" + total + ")")
+            binding.btKursiNext.visibility = View.VISIBLE
         }
     }
 }

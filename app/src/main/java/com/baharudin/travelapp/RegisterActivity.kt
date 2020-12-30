@@ -4,11 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.baharudin.travelapp.databinding.ActivityRegisterBinding
 import com.baharudin.travelapp.model.Users
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.*
-import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -21,10 +20,12 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var firebaseInstance : FirebaseDatabase
     private lateinit var preference: Preference
     private lateinit var databaseRef : DatabaseReference
+    lateinit var binding : ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         firebaseInstance = FirebaseDatabase.getInstance()
         dataRef = FirebaseDatabase.getInstance().getReference("Users")
@@ -32,24 +33,24 @@ class RegisterActivity : AppCompatActivity() {
         preference = Preference(this)
 
 
-        bt_daftar_next.setOnClickListener {
-            iUsername = et_daftar_user.text.toString()
-            iPassword = et_daftar_password.text.toString()
-            iEmail = et_daftar_email.text.toString()
-            iHP = et_daftar_hp.text.toString()
+        binding.btDaftarNext.setOnClickListener {
+            iUsername = binding.etDaftarUser.text.toString()
+            iPassword = binding.etDaftarPassword.text.toString()
+            iEmail = binding.etDaftarEmail.text.toString()
+            iHP = binding.etDaftarHp.text.toString()
 
             if (iUsername == ""){
-                et_daftar_user.error ="mohon isi username anda"
-                et_daftar_user.requestFocus()
+                binding.etDaftarUser.error ="mohon isi username anda"
+                binding.etDaftarUser.requestFocus()
             }else if (iPassword == ""){
-                et_daftar_password.error ="isi password anda"
-                et_daftar_password.requestFocus()
+                binding.etDaftarPassword.error ="isi password anda"
+                binding.etDaftarPassword.requestFocus()
             }else if (iEmail == ""){
-                et_daftar_email.error ="mohon isikan email anda"
-                et_daftar_email.requestFocus()
+                binding.etDaftarEmail.error ="mohon isikan email anda"
+                binding.etDaftarEmail.requestFocus()
             }else if (iHP == ""){
-                et_daftar_hp.error = "isikan no hp anda"
-                et_daftar_hp.requestFocus()
+                binding.etDaftarHp.error = "isikan no hp anda"
+                binding.etDaftarHp.requestFocus()
             }else{
                 saveUser(iUsername,iPassword,iEmail,iHP)
             }

@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.baharudin.travelapp.R
+import com.baharudin.travelapp.databinding.FragmentSettingBinding
 
 
-class Setting : Fragment() {
+class Setting : Fragment(R.layout.fragment_setting) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+    private var _binding : FragmentSettingBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentSettingBinding.bind(view)
+
     }
-
 }

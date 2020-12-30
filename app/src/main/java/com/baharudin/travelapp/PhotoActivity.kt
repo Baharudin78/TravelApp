@@ -1,6 +1,5 @@
 package com.baharudin.travelapp
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
@@ -10,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.baharudin.travelapp.databinding.ActivityPhotoBinding
 import com.baharudin.travelapp.model.Users
 import com.baharudin.travelapp.utils.Preference
 import com.bumptech.glide.Glide
@@ -18,7 +18,6 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.activity_photo.*
 import java.util.*
 
 class PhotoActivity : AppCompatActivity() {
@@ -33,12 +32,13 @@ class PhotoActivity : AppCompatActivity() {
     lateinit var dataRef : DatabaseReference
     private lateinit var mFIrebaseInstance : FirebaseDatabase
     lateinit var users: Users
-
+    lateinit var binding : ActivityPhotoBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_photo)
+        binding = ActivityPhotoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         preference = Preference(this)
         storage = FirebaseStorage.getInstance()
@@ -48,26 +48,26 @@ class PhotoActivity : AppCompatActivity() {
 
         users = intent.getParcelableExtra("data")!!
 
-       tv_hello.text = "Selamat datang\n " +users.username
+       binding.tvHello.text = "Selamat datang\n " +users.username
 
-        iv_add_foto.setOnClickListener {
+        binding.ivAddFoto.setOnClickListener {
             if (statusAdd){
                 statusAdd = false
 
-                bt_save_foto.visibility = View.VISIBLE
-                iv_add_foto.setImageResource(R.drawable.ic_add_24)
-                iv_foto.setImageResource(R.drawable.ic_person)
+                binding.btSaveFoto.visibility = View.VISIBLE
+                binding.ivAddFoto.setImageResource(R.drawable.ic_add_24)
+                binding.ivFoto.setImageResource(R.drawable.ic_person)
             }else{
                 ImagePicker.with(this)
                     .galleryOnly()
                     .start()
             }
         }
-        bt_lewati_foto.setOnClickListener {
+        binding.btLewatiFoto.setOnClickListener {
             finishAffinity()
             startActivity(Intent(this,HomeActivity::class.java))
         }
-        bt_save_foto.setOnClickListener {
+        binding.btSaveFoto.setOnClickListener {
             if (filePath != null){
                 val progressBar = ProgressDialog(this)
                 progressBar.setTitle("Uploading...")
@@ -137,11 +137,11 @@ class PhotoActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(filePath)
                 .apply(RequestOptions.circleCropTransform())
-                .into(iv_foto)
+                .into(binding.ivFoto)
 
             Log.i("tamvan","foto berhasil ")
-            bt_save_foto.visibility = View.VISIBLE
-            iv_add_foto.setImageResource(R.drawable.ic_baseline_delete_24)
+            binding.btSaveFoto.visibility = View.VISIBLE
+            binding.ivAddFoto.setImageResource(R.drawable.ic_baseline_delete_24)
         }else if (requestCode == ImagePicker.RESULT_ERROR){
             Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
         }else{
