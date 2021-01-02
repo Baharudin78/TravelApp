@@ -24,7 +24,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PersonAct"></activity>
+        <activity android:name=".SuccesAct"></activity>
+        <activity android:name=".TicketAct" />
+        <activity android:name=".PersonAct" />
         <activity android:name=".DestinasiActivity" />
         <activity android:name=".TujuanAwalActivity" />
         <activity android:name=".CheckoutActivity" />
