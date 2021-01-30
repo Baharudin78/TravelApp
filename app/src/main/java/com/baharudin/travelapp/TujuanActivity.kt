@@ -59,7 +59,26 @@ class TujuanActivity : AppCompatActivity() {
             tujuanAkhir = binding.tvKemana.text.toString()
             tempatAkhir = binding.tvRincian2.text.toString()
             tanggalBerangkat = binding.tvTanggal.text.toString()
-            savePlace(iUsername,tujuanAwal,tempatAwal,tujuanAkhir,tempatAkhir,tanggalBerangkat)
+
+            if(tujuanAwal.isEmpty()){
+                binding.tvDarimana.error = "mohon pilih tujuan anda"
+                binding.tvDarimana.requestFocus()
+            }else if (tempatAwal.isEmpty()){
+                binding.tvRincian1.error = "dimana jemputnya"
+                binding.tvRincian1.requestFocus()
+            }else if (tujuanAkhir.isEmpty()){
+                binding.tvKemana.error ="mohon isi tujuannya"
+                binding.tvKemana.requestFocus()
+            }else if (tempatAkhir.isEmpty()){
+                binding.tvRincian2.error = "dimana turunnya"
+                binding.tvRincian2.requestFocus()
+            }else if(tanggalBerangkat.isEmpty()){
+                binding.tvTanggal.error = "isi tanggal keberangkatan"
+                binding.tvTanggal.requestFocus()
+            }else{
+
+                savePlace(iUsername,tujuanAwal,tempatAwal,tujuanAkhir,tempatAkhir,tanggalBerangkat)
+            }
         }
 
         binding.tvTanggal.setOnClickListener {
