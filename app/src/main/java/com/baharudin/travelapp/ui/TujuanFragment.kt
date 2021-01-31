@@ -1,19 +1,27 @@
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 import android.app.Activity
+
 import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
-import com.baharudin.travelapp.databinding.ActivityTujuanBinding
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.baharudin.travelapp.*
+import com.baharudin.travelapp.R
+import com.baharudin.travelapp.databinding.FragmentTujuanBinding
 import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TujuanActivity : AppCompatActivity() {
+class TujuanFragment : Fragment(R.layout.fragment_tujuan) {
+
+    private var _binding : FragmentTujuanBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var tujuanAwal: String
     private lateinit var tempatAwal: String
@@ -27,14 +35,12 @@ class TujuanActivity : AppCompatActivity() {
     private lateinit var firebaseInstance : FirebaseDatabase
     private lateinit var mDataRef : DatabaseReference
     lateinit var preference : Preference
-    lateinit var binding : ActivityTujuanBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityTujuanBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        _binding = FragmentTujuanBinding.bind(view)
+        super.onViewCreated(view, savedInstanceState)
 
-        preference = Preference(this)
+        preference = Preference(requireContext())
         iKemana = binding.tvKemana.text.toString()
         iUsername = binding.tvNamaku.text.toString()
         firebaseInstance = FirebaseDatabase.getInstance()
@@ -44,12 +50,16 @@ class TujuanActivity : AppCompatActivity() {
 
         binding.tvNamaku.setText(preference.getData("username"))
         binding.tvDarimana.setOnClickListener {
-            val intent = Intent(this,TujuanAwalActivity::class.java)
+
+            val intent = Intent(requireContext(),TujuanAwalActivity::class.java)
             startActivityForResult(intent, 10)
         }
         binding.tvKemana.setOnClickListener {
-            val intent2 = Intent(this,DestinasiActivity::class.java)
+            val intent2 = Intent(requireContext(),DestinasiActivity::class.java)
             startActivityForResult(intent2,13)
+        }
+        binding.ivBack.setOnClickListener {
+            findNavController().navigate(R.id.action_tujuanFragment_to_dashboard)
         }
 
         binding.btLanjutkan.setOnClickListener {
@@ -85,7 +95,7 @@ class TujuanActivity : AppCompatActivity() {
             val newCalendar: Calendar = Calendar.getInstance()
 
             val datePickerDialog = DatePickerDialog(
-                this,
+                requireContext(),
                 { view, year, monthOfYear, dayOfMonth ->
                     val newDate: Calendar = Calendar.getInstance()
                     newDate.set(year, monthOfYear, dayOfMonth)
@@ -99,9 +109,7 @@ class TujuanActivity : AppCompatActivity() {
 
             datePickerDialog.show()
         }
-
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 10){
@@ -141,16 +149,17 @@ class TujuanActivity : AppCompatActivity() {
                 preference.setData("tanggal", tiket.tanggal.toString())
 
 
-                val intent = Intent(this@TujuanActivity, BusActivity::class.java)
+                val intent = Intent(requireContext(), BusActivity::class.java)
                 intent.putExtra("data", tiket)
                 startActivity(intent)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@TujuanActivity, "database error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "database error", Toast.LENGTH_SHORT).show()
             }
 
         })
 
     }
+
 }

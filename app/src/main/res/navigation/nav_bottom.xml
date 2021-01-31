@@ -9,7 +9,11 @@
         android:id="@+id/dashboard"
         android:name="com.baharudin.travelapp.fragment.Dashboard"
         android:label="Dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboard_to_tujuanFragment"
+            app:destination="@id/tujuanFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tiket"
         android:name="com.baharudin.travelapp.fragment.Tiket"
@@ -20,4 +24,13 @@
         android:name="com.baharudin.travelapp.fragment.Setting"
         android:label="Setting"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/tujuanFragment"
+        android:name="com.baharudin.travelapp.ui.TujuanFragment"
+        android:label="TujuanFragment"
+        tools:layout="@layout/fragment_tujuan" >
+        <action
+            android:id="@+id/action_tujuanFragment_to_dashboard"
+            app:destination="@id/dashboard" />
+    </fragment>
 </navigation>

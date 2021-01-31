@@ -3,6 +3,7 @@ package com.baharudin.travelapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.baharudin.travelapp.databinding.ActivityLoginBinding
 import com.baharudin.travelapp.model.Users
@@ -44,6 +45,8 @@ class LoginActivity : AppCompatActivity() {
                 binding.etPassword.requestFocus()
             }else{
                 getUser(iUsername,iPassword)
+                binding.progressBar.visibility = View.VISIBLE
+
             }
 
         }

@@ -35,6 +35,10 @@ class BusActivity : AppCompatActivity() {
         binding.tvTujuanAkhir.text = data?.tempatAwal
         binding.tvTanggal.text = data?.tanggal
 
+        binding.ivBack.setOnClickListener {
+
+        }
+
 
         binding.rvDaftarMobil.layoutManager = LinearLayoutManager(this)
         getData()
