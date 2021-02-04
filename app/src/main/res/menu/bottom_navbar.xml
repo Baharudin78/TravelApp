@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/dashboard"
-        android:title="Dashboard"
+        android:title="@string/dashboard"
         android:icon="@drawable/ic_dashboard"/>
     <item android:id="@+id/tiket"
-        android:title="Pesanan"
+        android:title="@string/pesanan"
         android:icon="@drawable/ic_ticket"/>
     <item android:id="@+id/setting2"
-        android:title="Akun"
+        android:title="@string/akun"
         android:icon="@drawable/ic_user"/>
 
 </menu>

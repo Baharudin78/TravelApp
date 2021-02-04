@@ -42,8 +42,8 @@ class CheckoutAdapter(private var list : List<Bus?>,private var listener : (Bus?
             val harga = NumberFormat.getCurrencyInstance(localId)
             tvHarga.setText(harga.format(list?.harga!!.toDouble()))
             //methot untuk menghilangkan icon kursi di recycleview
-            if (list?.kursi?.startsWith("Total") == true){
-                tvKursi.setText(list?.kursi)
+            if (list.kursi!!.startsWith("Total")){
+                tvKursi.setText(list.kursi)
                 tvKursi.setCompoundDrawables(null,null,null,null)
             }else{
                 tvKursi.setText("Kursi no. " + list.kursi)

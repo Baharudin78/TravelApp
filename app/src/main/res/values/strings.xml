@@ -17,4 +17,7 @@
     <string name="lanjutkan">lanjutkan</string>
     <string name="pesan_konfirmasi">Silahan konfirmasi segera pesanan anda</string>
     <string name="konfirmasi">Konfirmasi</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="pesanan">Pesanan</string>
+    <string name="akun">Akun</string>
 </resources>
