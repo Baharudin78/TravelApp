@@ -23,7 +23,7 @@ class CheckoutAdapter(private var list : List<Bus?>,private var listener : (Bus?
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        list[position]?.let { holder.bindItem(it,listener,contextAdapter) }
+        list[position]?.let { holder.bindItem(it, listener) }
     }
 
     override fun getItemCount(): Int {
@@ -34,7 +34,7 @@ class CheckoutAdapter(private var list : List<Bus?>,private var listener : (Bus?
         private var tvKursi : TextView = view.findViewById(R.id.tv_kursi)
         private var tvHarga : TextView = view.findViewById(R.id.tv_harga)
 
-        fun bindItem(list : Bus?, listener: (Bus?) -> Unit,context: Context){
+        fun bindItem(list: Bus?, listener: (Bus?) -> Unit){
             tvKursi.text = list?.kursi
 
             //function membuat format mata uang

@@ -39,6 +39,7 @@ class CheckoutActivity : AppCompatActivity() {
         for (a in dataList.indices){
             total += dataList[a]?.harga!!.toInt()
         }
+        preference.setData("total",total.toString())
         dataList.add(Bus("Total yang harus dibayar ",total.toString()))
         binding.rvDetail.layoutManager = LinearLayoutManager(this)
         binding.rvDetail.adapter = CheckoutAdapter(dataList){

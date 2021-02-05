@@ -69,7 +69,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/tv_tujuan_akhir"
                 app:layout_constraintStart_toEndOf="@+id/tv_tujuan_awal"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_arrow_right_24" />
+                app:srcCompat="@drawable/ic_arrow_white" />
 
             <TextView
                 android:id="@+id/tv_tujuan_akhir"
@@ -88,7 +88,7 @@
                 android:id="@+id/tv_tanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/roboto"
                 android:text="Sabtu,10 agustus 2020"
                 android:textColor="@color/colorWhite"
@@ -171,7 +171,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto"
                 android:text="Transfer BRI"
                 android:textColor="@color/colorBlack"
@@ -188,6 +187,17 @@
                 android:fontFamily="@font/roboto"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/norek"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/roboto"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
