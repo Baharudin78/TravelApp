@@ -11,4 +11,10 @@
     <color name="colorGreySec">#D8D4D4</color>
 
     <color name="colorGrey">#A8D0FB</color>
+
+    <color name="colorOrange">#FF6000</color>
+
+    <color name="colorWhiteBack">#EAE7E7</color>
+
+    <color name="colorRed">#EF2626</color>
 </resources>

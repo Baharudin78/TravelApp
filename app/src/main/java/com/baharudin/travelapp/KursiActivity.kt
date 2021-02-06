@@ -1,7 +1,5 @@
 package com.baharudin.travelapp
 
-import com.baharudin.travelapp.CheckoutActivity
-import com.baharudin.travelapp.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -35,6 +33,8 @@ class KursiActivity : AppCompatActivity() {
         preference = Preference(this)
         val data = intent.getParcelableExtra<Bus>("data1")
         binding.tvNamaBus.text = data?.travel
+        val bus = data?.travel
+        preference.setData("bus",bus.toString())
         binding.tvDari.setText(preference.getData("tujuanAwal"))
         binding.tvTujuan.setText(preference.getData("tempatAwal"))
 

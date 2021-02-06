@@ -21,4 +21,8 @@
     <string name="pesanan">Pesanan</string>
     <string name="akun">Akun</string>
     <string name="norek">696601007989532</string>
+
+    <string name="pesan_konfirmasi_bukti">
+        Tolong,untuk melakukan pengungahaan bukti pembayaran untuk menyelesaikan pemesanan.
+    </string>
 </resources>
