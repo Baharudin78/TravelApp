@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.baharudin.travelapp.adapter.CheckoutAdapter
 import com.baharudin.travelapp.databinding.ActivityCheckoutBinding
 import com.baharudin.travelapp.model.Bus
+import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
+import com.google.firebase.database.*
 
 class CheckoutActivity : AppCompatActivity() {
 
@@ -22,6 +24,9 @@ class CheckoutActivity : AppCompatActivity() {
     private var dataList = ArrayList<Bus?>()
     lateinit var binding : ActivityCheckoutBinding
     private var total : Int = 0
+    lateinit var tiket : Ticket
+
+    lateinit var dataRef : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +34,8 @@ class CheckoutActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         preference = Preference(this)
+        dataRef = FirebaseDatabase.getInstance().getReference("MyTicket")
+        tiket = Ticket()
         dataList = intent.getSerializableExtra("data") as ArrayList<Bus?>
         val data = intent.getParcelableExtra<Bus>("datas")
 
@@ -39,17 +46,32 @@ class CheckoutActivity : AppCompatActivity() {
         for (a in dataList.indices){
             total += dataList[a]?.harga!!.toInt()
         }
-        preference.setData("total",total.toString())
+
         dataList.add(Bus("Total yang harus dibayar ",total.toString()))
         binding.rvDetail.layoutManager = LinearLayoutManager(this)
         binding.rvDetail.adapter = CheckoutAdapter(dataList){
 
         }
         binding.btNextKonfirmasi.setOnClickListener {
+            uploadTotal(tiket)
             startActivity(Intent(this,SuccesAct::class.java))
             showNotif(data!!)
         }
 
+    }
+    private fun uploadTotal(tiket : Ticket){
+        dataRef.child(preference.getData("username")!!).addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                dataRef.setValue(tiket)
+                tiket.total
+                preference.setData("total",total.toString())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
     private fun showNotif(datas : Bus){
         val NOTIFICATION_CHANELL_ID = "Travel Sadam Jaya"

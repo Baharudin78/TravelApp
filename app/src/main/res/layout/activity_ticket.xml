@@ -126,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toStartOf="@+id/imageView15"
                 app:layout_constraintStart_toEndOf="@+id/imageView14"
@@ -137,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toStartOf="@+id/tv_kemana"
                 app:layout_constraintStart_toEndOf="@+id/tv_darimana"
@@ -149,19 +149,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/imageView15"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_namatravel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="TextView"
-                app:layout_constraintStart_toStartOf="@+id/tv_darimana"
-                app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
             <TextView
                 android:id="@+id/tv_tanggal_keberangkatan"

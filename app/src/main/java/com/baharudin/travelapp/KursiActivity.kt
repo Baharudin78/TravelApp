@@ -6,7 +6,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.baharudin.travelapp.databinding.ActivityKursiBinding
 import com.baharudin.travelapp.model.Bus
+import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
+import com.google.firebase.database.*
 
 class KursiActivity : AppCompatActivity() {
 
@@ -20,23 +22,32 @@ class KursiActivity : AppCompatActivity() {
     private var statusA8 : Boolean = false
     private var statusA9 : Boolean = false
     private var total : Int = 0
+    lateinit var namaBus : String
     private var dataList = ArrayList<Bus>()
     lateinit var binding : ActivityKursiBinding
     lateinit var preference : Preference
+
+    lateinit var tiket : Ticket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityKursiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         preference = Preference(this)
+
+
+
+
         val data = intent.getParcelableExtra<Bus>("data1")
         binding.tvNamaBus.text = data?.travel
+
         val bus = data?.travel
         preference.setData("bus",bus.toString())
         binding.tvDari.setText(preference.getData("tujuanAwal"))
         binding.tvTujuan.setText(preference.getData("tempatAwal"))
+
+        namaBus = binding.tvNamaBus.text.toString()
 
 
         binding.ivA1.setOnClickListener {
@@ -200,4 +211,5 @@ class KursiActivity : AppCompatActivity() {
             binding.btKursiNext.visibility = View.VISIBLE
         }
     }
+
 }

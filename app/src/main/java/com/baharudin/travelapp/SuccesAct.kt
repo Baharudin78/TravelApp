@@ -1,7 +1,7 @@
 package com.baharudin.travelapp
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.baharudin.travelapp.databinding.ActivitySuccesBinding
 
@@ -15,14 +15,16 @@ class SuccesAct : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        binding.button.setOnClickListener {
+            finishAffinity()
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val alertDialog = AlertDialog.Builder(this)
-        alertDialog.setTitle("Kabur dari Laman ini ?")
-        alertDialog.setMessage("Anda akan kembali ke halam dashboard")
-
-
+        finishAffinity()
+        startActivity(Intent(this,HomeActivity::class.java))
     }
+
 }

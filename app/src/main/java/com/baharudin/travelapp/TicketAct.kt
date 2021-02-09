@@ -17,11 +17,10 @@ class TicketAct : AppCompatActivity() {
 
         preference = Preference(this)
 
-        binding.tvNamatravel.text = preference.getData("bus")
         binding.tvTujuanAwal.text = preference.getData("tujuanAwal")
         binding.tvDarimana.text = preference.getData("tujuanAwal")
-        binding.tvTujuanAkhir.text = preference.getData("tujuanAkhir")
-        binding.tvKemana.text = preference.getData("tujuanAkhir")
+        binding.tvTujuanAkhir.text = preference.getData("tempatAwal")
+        binding.tvKemana.text = preference.getData("tempatAwal")
         binding.tvTanggal.text = preference.getData("tanggal")
         binding.tvTanggalKeberangkatan.text = preference.getData("tanggal")
         binding.tvTotal.text = preference.getData("total")
