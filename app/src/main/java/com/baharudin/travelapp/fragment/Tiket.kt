@@ -37,7 +37,7 @@ class Tiket : Fragment(R.layout.fragment_tiket) {
                 for (getData in snapshot.children){
                     val tiket = getData.getValue(Ticket::class.java)
                     dataList.add(tiket!!)
-                }
+               }
                 binding.rvRiwayat.adapter = TiketAdapter(dataList)
             }
 

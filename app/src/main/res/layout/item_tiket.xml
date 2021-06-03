@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/montserrat_bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="HAHAHA" />
@@ -43,6 +44,7 @@
 
             <TextView
                 android:id="@+id/tv_tujuanakhir"
+                android:fontFamily="@font/montserrat_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -53,6 +55,7 @@
 
             <TextView
                 android:id="@+id/tv_tanggal"
+                android:fontFamily="@font/montserrat_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

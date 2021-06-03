@@ -1,27 +1,22 @@
-package com.baharudin.travelapp.ui
+package com.baharudin.travelapp
 
 import android.app.Activity
-
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.baharudin.travelapp.*
-import com.baharudin.travelapp.R
-import com.baharudin.travelapp.databinding.FragmentTujuanBinding
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import com.baharudin.travelapp.databinding.ActivityTujuanBinding
 import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TujuanFragment : Fragment(R.layout.fragment_tujuan) {
+class TujuanActivity : AppCompatActivity() {
 
-    private var _binding : FragmentTujuanBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding : ActivityTujuanBinding
 
     private lateinit var tujuanAwal: String
     private lateinit var tempatAwal: String
@@ -36,30 +31,31 @@ class TujuanFragment : Fragment(R.layout.fragment_tujuan) {
     private lateinit var mDataRef : DatabaseReference
     lateinit var preference : Preference
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        _binding = FragmentTujuanBinding.bind(view)
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityTujuanBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        preference = Preference(requireContext())
+
+
+        preference = Preference(this)
         iKemana = binding.tvKemana.text.toString()
         iUsername = binding.tvNamaku.text.toString()
         firebaseInstance = FirebaseDatabase.getInstance()
         dataRef = FirebaseDatabase.getInstance().getReference()
         mDataRef = firebaseInstance.getReference().child("MyTicket").child(preference.getData("username")!!)
 
-
         binding.tvNamaku.setText(preference.getData("username"))
         binding.tvDarimana.setOnClickListener {
-
-            val intent = Intent(requireContext(),TujuanAwalActivity::class.java)
+            
+            val intent = Intent(this ,TujuanAwalActivity::class.java)
             startActivityForResult(intent, 10)
         }
         binding.tvKemana.setOnClickListener {
-            val intent2 = Intent(requireContext(),DestinasiActivity::class.java)
+            val intent2 = Intent(this,DestinasiActivity::class.java)
             startActivityForResult(intent2,13)
         }
         binding.ivBack.setOnClickListener {
-            findNavController().navigate(R.id.action_tujuanFragment_to_dashboard)
         }
 
         binding.btLanjutkan.setOnClickListener {
@@ -90,12 +86,11 @@ class TujuanFragment : Fragment(R.layout.fragment_tujuan) {
                 savePlace(iUsername,tujuanAwal,tempatAwal,tujuanAkhir,tempatAkhir,tanggalBerangkat)
             }
         }
-
         binding.tvTanggal.setOnClickListener {
             val newCalendar: Calendar = Calendar.getInstance()
 
             val datePickerDialog = DatePickerDialog(
-                requireContext(),
+                this,
                 { view, year, monthOfYear, dayOfMonth ->
                     val newDate: Calendar = Calendar.getInstance()
                     newDate.set(year, monthOfYear, dayOfMonth)
@@ -110,7 +105,8 @@ class TujuanFragment : Fragment(R.layout.fragment_tujuan) {
             datePickerDialog.show()
         }
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 10){
             if (resultCode == Activity.RESULT_OK){
@@ -147,19 +143,19 @@ class TujuanFragment : Fragment(R.layout.fragment_tujuan) {
                 preference.setData("tujuanAkhir", tiket.tujuanAkhir.toString())
                 preference.setData("tempatAkhir", tiket.tempatAkhir.toString())
                 preference.setData("tanggal", tiket.tanggal.toString())
+                preference.setData("total","")
 
 
-                val intent = Intent(requireContext(), BusActivity::class.java)
+                val intent = Intent(this@TujuanActivity, BusActivity::class.java)
                 intent.putExtra("data", tiket)
                 startActivity(intent)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(requireContext(), "database error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@TujuanActivity , "database error", Toast.LENGTH_SHORT).show()
             }
 
         })
 
     }
-
 }

@@ -11,6 +11,6 @@ data class Ticket (
     var tempatAwal : String? ="",
     var tempatAkhir : String? ="",
     var tanggal : String? ="",
-    var bus : String? = null,
-    var total : String? = null
+    var bus : String? = "",
+    var total : String? = ""
 ):Parcelable

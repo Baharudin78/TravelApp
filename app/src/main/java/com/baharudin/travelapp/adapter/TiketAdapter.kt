@@ -15,8 +15,8 @@ class TiketAdapter(private var data : List<Ticket>) : RecyclerView.Adapter<Tiket
         private var etTanggal : TextView = binding.tvTanggal
 
         fun bindItem(data : Ticket){
-            etTujuanAwal.text = data.tempatAwal
-            etTujuanAkhir.text = data.tujuanAkhir
+            etTujuanAwal.text = data.tujuanAwal
+            etTujuanAkhir.text = data.tempatAwal
             etTanggal.text = data.tanggal
         }
     }

@@ -8,6 +8,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,26 +54,26 @@ class CheckoutActivity : AppCompatActivity() {
 
         }
         binding.btNextKonfirmasi.setOnClickListener {
-            uploadTotal(tiket)
+//            uploadTotal(tiket)
             startActivity(Intent(this,SuccesAct::class.java))
             showNotif(data!!)
         }
 
     }
-    private fun uploadTotal(tiket : Ticket){
-        dataRef.child(preference.getData("username")!!).addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                dataRef.setValue(tiket)
-                tiket.total
-                preference.setData("total",total.toString())
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
+//    private fun uploadTotal(tiket : Ticket){
+//        dataRef.child(preference.getData("username")!!).addListenerForSingleValueEvent(object : ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                dataRef.setValue(tiket)
+//                tiket.total
+//                preference.setData("total",total.toString())
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Toast.makeText(this@CheckoutActivity, "failed", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
+//    }
     private fun showNotif(datas : Bus){
         val NOTIFICATION_CHANELL_ID = "Travel Sadam Jaya"
         val context = this.applicationContext
