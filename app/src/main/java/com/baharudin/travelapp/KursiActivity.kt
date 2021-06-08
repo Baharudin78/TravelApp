@@ -36,9 +36,6 @@ class KursiActivity : AppCompatActivity() {
 
         preference = Preference(this)
 
-
-
-
         val data = intent.getParcelableExtra<Bus>("data1")
         binding.tvNamaBus.text = data?.travel
 
@@ -48,7 +45,6 @@ class KursiActivity : AppCompatActivity() {
         binding.tvTujuan.setText(preference.getData("tempatAwal"))
 
         namaBus = binding.tvNamaBus.text.toString()
-
 
         binding.ivA1.setOnClickListener {
             if (statusA1){

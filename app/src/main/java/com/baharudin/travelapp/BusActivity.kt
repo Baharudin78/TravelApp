@@ -14,7 +14,7 @@ import com.google.firebase.database.*
 
 class BusActivity : AppCompatActivity() {
 
-    lateinit var mDatabaseRef : DatabaseReference
+    private lateinit var mDatabaseRef : DatabaseReference
     lateinit var preference : Preference
     var dataList = ArrayList<Bus>()
     lateinit var binding : ActivityBusBinding

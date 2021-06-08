@@ -26,7 +26,7 @@ class CheckoutActivity : AppCompatActivity() {
     lateinit var binding : ActivityCheckoutBinding
     private var total : Int = 0
     lateinit var tiket : Ticket
-
+    private lateinit var tempatAkhir: String
     lateinit var dataRef : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +35,9 @@ class CheckoutActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         preference = Preference(this)
-        dataRef = FirebaseDatabase.getInstance().getReference("MyTicket")
+        dataRef = FirebaseDatabase.getInstance().getReference("MyTicket").child(preference.getData("username")!!)
         tiket = Ticket()
+        tempatAkhir = binding.tvTujuanAkhir.text.toString()
         dataList = intent.getSerializableExtra("data") as ArrayList<Bus?>
         val data = intent.getParcelableExtra<Bus>("datas")
 
@@ -54,26 +55,32 @@ class CheckoutActivity : AppCompatActivity() {
 
         }
         binding.btNextKonfirmasi.setOnClickListener {
-//            uploadTotal(tiket)
-            startActivity(Intent(this,SuccesAct::class.java))
+            saveTotal(total)
             showNotif(data!!)
         }
-
     }
-//    private fun uploadTotal(tiket : Ticket){
-//        dataRef.child(preference.getData("username")!!).addListenerForSingleValueEvent(object : ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                dataRef.setValue(tiket)
-//                tiket.total
-//                preference.setData("total",total.toString())
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Toast.makeText(this@CheckoutActivity, "failed", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
-//    }
+    private fun saveTotal(total : Int) {
+        val ticket = Ticket()
+        ticket.total = total.toString()
+        uploadTotal(total)
+    }
+    private fun uploadTotal(total: Int){
+        dataRef.child(preference.getData("tempatAwal")!!).addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                dataRef.child(tempatAkhir).setValue(tiket)
+                tiket.total = total.toString()
+                preference.setData("total",tiket.total.toString())
+
+                val intent = Intent(this@CheckoutActivity,SuccesAct::class.java)
+                startActivity(intent)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@CheckoutActivity, "failed", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
     private fun showNotif(datas : Bus){
         val NOTIFICATION_CHANELL_ID = "Travel Sadam Jaya"
         val context = this.applicationContext

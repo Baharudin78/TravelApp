@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.baharudin.travelapp.R
+import com.baharudin.travelapp.RestoActivity
 import com.baharudin.travelapp.TujuanActivity
 import com.baharudin.travelapp.databinding.FragmentDashboardBinding
 import com.baharudin.travelapp.utils.Preference
@@ -45,6 +47,11 @@ class Dashboard : Fragment(R.layout.fragment_dashboard) {
             val intent = Intent(requireContext(), TujuanActivity::class.java)
             startActivity(intent)
         }
+        binding.ivFood.setOnClickListener {
+            val intent = Intent(requireContext(), RestoActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 }

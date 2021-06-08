@@ -1,7 +1,6 @@
 package com.baharudin.travelapp.fragment
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -51,26 +50,26 @@ class Setting : Fragment(R.layout.fragment_setting) {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setTitle("Alert Dialog")
                 .setMessage("Apakah anda ingin Logout")
-                .setPositiveButton("Oke",
-                    DialogInterface.OnClickListener { dialog, which ->
-                        preference.clear()
-                        Toast.makeText(
-                            requireContext(),
-                            "Tombol oke di klik",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        startActivity(Intent(requireContext(),LoginActivity::class.java))
-                        activity?.finish()
-                    })
-                .setNegativeButton("Batal",
-                    DialogInterface.OnClickListener { dialog, which ->
-                        Toast.makeText(
-                            context,
-                            "Batal diklik",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    })
-            val dialog: AlertDialog = builder.create()
+                .setPositiveButton("Oke"
+                ) { dialog, which ->
+                    preference.clear()
+                    Toast.makeText(
+                        requireContext(),
+                        "Tombol oke di klik",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    startActivity(Intent(requireContext(), LoginActivity::class.java))
+                    activity?.finish()
+                }
+                .setNegativeButton("Batal"
+                ) { dialog, which ->
+                    Toast.makeText(
+                        context,
+                        "Batal diklik",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        val dialog: AlertDialog = builder.create()
             dialog.show()
 
     }
