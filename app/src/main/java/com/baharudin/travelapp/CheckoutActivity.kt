@@ -46,7 +46,7 @@ class CheckoutActivity : AppCompatActivity() {
         binding.tvTanggal.text = preference.getData("tanggal")
 
         for (a in dataList.indices){
-            total += dataList[a]?.harga!!.toInt()
+            total += dataList[a]!!.harga!!.toInt()
         }
 
         dataList.add(Bus("Total yang harus dibayar ",total.toString()))

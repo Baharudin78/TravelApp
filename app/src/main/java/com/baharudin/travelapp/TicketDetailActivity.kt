@@ -6,33 +6,28 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.baharudin.travelapp.databinding.ActivityTicketBinding
+import com.baharudin.travelapp.databinding.ActivityTicketDetailBinding
 import com.baharudin.travelapp.model.Ticket
-import com.baharudin.travelapp.utils.Preference
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 
+class TicketDetailActivity : AppCompatActivity() {
 
-class TicketAct : AppCompatActivity() {
-    lateinit var binding : ActivityTicketBinding
-
-    lateinit var preference : Preference
+    private lateinit var binding : ActivityTicketDetailBinding
     private val nomorTelepon : String = "+6285230155923"
     private val pesanText : String = "Mau konfirmasi pembayaran tiket travel"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTicketBinding.inflate(layoutInflater)
+        binding = ActivityTicketDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        preference = Preference(this)
+        val data = intent.getParcelableExtra<Ticket>("data_tiket")
 
-        binding.tvTujuanAwal.text = preference.getData("tujuanAwal")
-        binding.tvDarimana.text = preference.getData("tujuanAwal")
-        binding.tvTujuanAkhir.text = preference.getData("tempatAwal")
-        binding.tvKemana.text = preference.getData("tempatAkhir")
-        binding.tvTanggal.text = preference.getData("tanggal")
-        binding.tvTotal.text = preference.getData("total")
+        binding.tvTujuanAwal.text = data?.tujuanAwal
+        binding.tvDarimana.text = data?.tujuanAkhir
+        binding.tvTujuanAkhir.text = data?.tempatAwal
+        binding.tvKemana.text = data?.tempatAkhir
+        binding.tvTanggal.text = data?.tanggal
+        binding.tvTotal.text = data?.total
 
         binding.btUploadBukti.setOnClickListener {
             val installed: Boolean = isAppInstalled("com.whatsapp")
@@ -47,13 +42,7 @@ class TicketAct : AppCompatActivity() {
             }
 
         }
-        binding.back.setOnClickListener {
-            startActivity(Intent(this,HomeActivity::class.java))
-            finishAffinity()
-        }
-
     }
-
     private fun isAppInstalled(s: String): Boolean {
         val packageManager = packageManager
         var is_installed: Boolean
@@ -67,5 +56,4 @@ class TicketAct : AppCompatActivity() {
         }
         return is_installed
     }
-
 }

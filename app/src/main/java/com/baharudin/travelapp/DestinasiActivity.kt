@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.baharudin.travelapp.adapter.DestinationAdapter
@@ -22,7 +23,7 @@ class DestinasiActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         dataRef = FirebaseDatabase.getInstance().getReference("Destination")
-
+        showProgressBar()
         getData()
         binding.rvDestination.layoutManager = GridLayoutManager(this, 2)
 
@@ -34,6 +35,7 @@ class DestinasiActivity : AppCompatActivity() {
 
                 for ( getSnapshot in snapshot.children){
                     val tempat = getSnapshot.getValue(Destination::class.java)
+                    hideProgressBar()
                     dataList.add(tempat!!)
                 }
                 binding.rvDestination.adapter = DestinationAdapter(dataList){
@@ -49,5 +51,11 @@ class DestinasiActivity : AppCompatActivity() {
             }
 
         })
+    }
+    private fun showProgressBar() {
+        binding.progressBar5.visibility = View.VISIBLE
+    }
+    private fun hideProgressBar() {
+        binding.progressBar5.visibility = View.INVISIBLE
     }
 }

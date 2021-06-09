@@ -2,24 +2,23 @@ package com.baharudin.travelapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.baharudin.travelapp.R
+import com.baharudin.travelapp.databinding.ItemTravelListBinding
 import com.baharudin.travelapp.model.Bus
 import com.bumptech.glide.Glide
 
 class BusAdaptor (private var data : List<Bus>, private  var listener : (Bus) -> Unit) : RecyclerView.Adapter<BusAdaptor.MyViewHolder>(){
 
-    lateinit var contextAdapter : Context
+    private lateinit var contextAdapter : Context
 
-    class MyViewHolder(view : View) : RecyclerView.ViewHolder(view){
-        private var ivFoto : ImageView = view.findViewById(R.id.iv_foto_travel)
-        private var tvNama : TextView = view.findViewById(R.id.tv_nama_travel)
-        private var tvFasilitas : TextView = view.findViewById(R.id.tv_fasilitas)
-        private var tvHarga : TextView = view.findViewById(R.id.tv_harga)
+    class MyViewHolder(val binding : ItemTravelListBinding) : RecyclerView.ViewHolder(binding.root){
+        private var ivFoto : ImageView = binding.ivFotoTravel
+        private var tvNama : TextView = binding.tvNamaTravel
+        private var tvFasilitas : TextView = binding.tvFasilitas
+        private var tvHarga : TextView = binding.tvHarga
 
         fun bindItem( data : Bus,context : Context,listener: (Bus) -> Unit){
             tvNama.text = data.travel
@@ -36,10 +35,14 @@ class BusAdaptor (private var data : List<Bus>, private  var listener : (Bus) ->
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
+        val layoutInflater = ItemTravelListBinding.inflate(
+            LayoutInflater.from(
+                parent.context
+            ),
+            parent,false
+        )
         contextAdapter = parent.context
-        val inflater = layoutInflater.inflate(R.layout.item_travel_list,parent,false)
-        return MyViewHolder(inflater)
+        return MyViewHolder(layoutInflater)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

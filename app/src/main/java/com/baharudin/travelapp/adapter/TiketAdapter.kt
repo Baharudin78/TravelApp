@@ -7,17 +7,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.baharudin.travelapp.databinding.ItemTiketBinding
 import com.baharudin.travelapp.model.Ticket
 
-class TiketAdapter(private var data : List<Ticket>) : RecyclerView.Adapter<TiketAdapter.TiketHolder>() {
+class TiketAdapter(private var data : List<Ticket>,private var listener : (Ticket) -> Unit) : RecyclerView.Adapter<TiketAdapter.TiketHolder>() {
 
     inner class TiketHolder(binding : ItemTiketBinding) : RecyclerView.ViewHolder(binding.root){
         private var etTujuanAwal : TextView = binding.tvTujuanawal
         private var etTujuanAkhir: TextView = binding.tvTujuanakhir
         private var etTanggal : TextView = binding.tvTanggal
 
-        fun bindItem(data : Ticket){
+        fun bindItem(data : Ticket,listener: (Ticket) -> Unit){
             etTujuanAwal.text = data.tujuanAwal
             etTujuanAkhir.text = data.tempatAwal
             etTanggal.text = data.tanggal
+
+            itemView.setOnClickListener {
+                listener(data)
+            }
         }
     }
 
@@ -27,7 +31,7 @@ class TiketAdapter(private var data : List<Ticket>) : RecyclerView.Adapter<Tiket
     }
 
     override fun onBindViewHolder(holder: TiketHolder, position: Int) {
-        holder.bindItem(data[position])
+        holder.bindItem(data[position],listener)
     }
 
     override fun getItemCount(): Int = data.size

@@ -81,7 +81,8 @@ class TujuanActivity : AppCompatActivity() {
                 binding.tvTanggal.error = "isi tanggal keberangkatan"
                 binding.tvTanggal.requestFocus()
             }else{
-
+                binding.btLanjutkan.text ="Tunggu"
+                binding.btLanjutkan.isEnabled = false
                 savePlace(iUsername,tujuanAwal,tempatAwal,tujuanAkhir,tempatAkhir,tanggalBerangkat)
             }
         }

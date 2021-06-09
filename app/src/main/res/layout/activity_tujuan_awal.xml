@@ -35,16 +35,27 @@
         app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_alamat"
         android:layout_width="0dp"
         android:layout_height="300dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="24dp"
-        android:id="@+id/rv_alamat"
         android:background="@drawable/bg_shape_white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <ProgressBar
+        android:id="@+id/progressBar4"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_alamat"
+        app:layout_constraintEnd_toEndOf="@+id/rv_alamat"
+        app:layout_constraintStart_toStartOf="@+id/rv_alamat"
+        app:layout_constraintTop_toTopOf="@+id/rv_alamat" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,13 @@
 package com.baharudin.travelapp.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baharudin.travelapp.R
+import com.baharudin.travelapp.TicketDetailActivity
 import com.baharudin.travelapp.adapter.TiketAdapter
 import com.baharudin.travelapp.databinding.FragmentTiketBinding
 import com.baharudin.travelapp.model.Ticket
@@ -29,6 +31,7 @@ class Tiket : Fragment(R.layout.fragment_tiket) {
         dataRef = FirebaseDatabase.getInstance().getReference("MyTicket").child(preference.getData("username")!!)
         binding.rvRiwayat.layoutManager = LinearLayoutManager(activity)
         getData()
+        showProgressBar()
     }
     private fun getData(){
         dataRef.addValueEventListener(object : ValueEventListener {
@@ -36,9 +39,14 @@ class Tiket : Fragment(R.layout.fragment_tiket) {
                 dataList.clear()
                 for (getData in snapshot.children){
                     val tiket = getData.getValue(Ticket::class.java)
+                    hideProgressBar()
                     dataList.add(tiket!!)
                }
-                binding.rvRiwayat.adapter = TiketAdapter(dataList)
+                binding.rvRiwayat.adapter = TiketAdapter(dataList){
+                    val gotoTiket = Intent(requireContext(), TicketDetailActivity::class.java)
+                    gotoTiket.putExtra("data_tiket",it)
+                    startActivity(gotoTiket)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -46,6 +54,12 @@ class Tiket : Fragment(R.layout.fragment_tiket) {
             }
 
         })
+    }
+    private fun showProgressBar() {
+        binding.progressBar3.visibility = View.VISIBLE
+    }
+    private fun hideProgressBar() {
+        binding.progressBar3.visibility = View.INVISIBLE
     }
 
 }
