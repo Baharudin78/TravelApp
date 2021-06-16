@@ -16,32 +16,38 @@ import com.google.firebase.database.*
 
 
 class Tiket : Fragment(R.layout.fragment_tiket) {
+
     lateinit var dataRef : DatabaseReference
     lateinit var preference: Preference
-    var dataList = ArrayList<Ticket>()
     private var _binding : FragmentTiketBinding? = null
     private val binding get() = _binding!!
-    
+    var dataList = ArrayList<Ticket>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentTiketBinding.bind(view)
 
+
+
         preference = Preference(requireContext().applicationContext)
-        dataRef = FirebaseDatabase.getInstance().getReference("MyTicket").child(preference.getData("username")!!)
+        dataRef = FirebaseDatabase.getInstance().getReference("MyTicket")
+
         binding.rvRiwayat.layoutManager = LinearLayoutManager(activity)
         getData()
         showProgressBar()
+
+
+
     }
     private fun getData(){
-        dataRef.addValueEventListener(object : ValueEventListener {
+        dataRef.orderByKey().addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 dataList.clear()
                 for (getData in snapshot.children){
                     val tiket = getData.getValue(Ticket::class.java)
                     hideProgressBar()
                     dataList.add(tiket!!)
-               }
+                }
                 binding.rvRiwayat.adapter = TiketAdapter(dataList){
                     val gotoTiket = Intent(requireContext(), TicketDetailActivity::class.java)
                     gotoTiket.putExtra("data_tiket",it)
@@ -61,5 +67,4 @@ class Tiket : Fragment(R.layout.fragment_tiket) {
     private fun hideProgressBar() {
         binding.progressBar3.visibility = View.INVISIBLE
     }
-
 }

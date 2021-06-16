@@ -12,8 +12,6 @@ import com.baharudin.travelapp.model.Ticket
 class TicketDetailActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityTicketDetailBinding
-    private val nomorTelepon : String = "+6285230155923"
-    private val pesanText : String = "Mau konfirmasi pembayaran tiket travel"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,31 +27,7 @@ class TicketDetailActivity : AppCompatActivity() {
         binding.tvTanggal.text = data?.tanggal
         binding.tvTotal.text = data?.total
 
-        binding.btUploadBukti.setOnClickListener {
-            val installed: Boolean = isAppInstalled("com.whatsapp")
-            if (installed) {
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.data =
-                    Uri.parse("http://api.whatsapp.com/send?phone=" + nomorTelepon.toString() + "&text=" + pesanText)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Whatsapp is not installed!", Toast.LENGTH_SHORT)
-                    .show()
-            }
 
-        }
     }
-    private fun isAppInstalled(s: String): Boolean {
-        val packageManager = packageManager
-        var is_installed: Boolean
 
-        try {
-            packageManager.getPackageInfo(s, PackageManager.GET_ACTIVITIES)
-            is_installed = true
-        } catch (e: PackageManager.NameNotFoundException) {
-            is_installed = false
-            e.printStackTrace()
-        }
-        return is_installed
-    }
 }

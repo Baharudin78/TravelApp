@@ -28,7 +28,7 @@ class TicketAct : AppCompatActivity() {
         preference = Preference(this)
 
         binding.tvTujuanAwal.text = preference.getData("tujuanAwal")
-        binding.tvDarimana.text = preference.getData("tujuanAwal")
+        binding.tvDarimana.text = preference.getData("tujuanAkhir")
         binding.tvTujuanAkhir.text = preference.getData("tempatAwal")
         binding.tvKemana.text = preference.getData("tempatAkhir")
         binding.tvTanggal.text = preference.getData("tanggal")

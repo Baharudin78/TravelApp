@@ -28,6 +28,7 @@ class CheckoutActivity : AppCompatActivity() {
     lateinit var tiket : Ticket
     private lateinit var tempatAkhir: String
     lateinit var dataRef : DatabaseReference
+    private lateinit var iUsername : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,20 +36,25 @@ class CheckoutActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         preference = Preference(this)
-        dataRef = FirebaseDatabase.getInstance().getReference("MyTicket").child(preference.getData("username")!!)
-        tiket = Ticket()
+
+        iUsername = binding.tvUsername.text.toString()
         tempatAkhir = binding.tvTujuanAkhir.text.toString()
-        dataList = intent.getSerializableExtra("data") as ArrayList<Bus?>
-        val data = intent.getParcelableExtra<Bus>("datas")
+        dataRef = FirebaseDatabase.getInstance().getReference("MyTicket")
+            .child(preference.getData("tempatAwal")!!)
+            .child(preference.getData("username")!!)
+        tiket = Ticket()
 
         binding.tvTujuanAwal.text = preference.getData("tujuanAwal")
+        binding.tvUsername.text = preference.getData("username")
         binding.tvTujuanAkhir.text = preference.getData("tempatAwal")
         binding.tvTanggal.text = preference.getData("tanggal")
+
+        dataList = intent.getSerializableExtra("data") as ArrayList<Bus?>
+        val data = intent.getParcelableExtra<Bus>("datas")
 
         for (a in dataList.indices){
             total += dataList[a]!!.harga!!.toInt()
         }
-
         dataList.add(Bus("Total yang harus dibayar ",total.toString()))
         binding.rvDetail.layoutManager = LinearLayoutManager(this)
         binding.rvDetail.adapter = CheckoutAdapter(dataList){
@@ -65,11 +71,17 @@ class CheckoutActivity : AppCompatActivity() {
         uploadTotal(total)
     }
     private fun uploadTotal(total: Int){
-        dataRef.child(preference.getData("tempatAwal")!!).addListenerForSingleValueEvent(object : ValueEventListener{
+        dataRef.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                dataRef.child(tempatAkhir).setValue(tiket)
+
+
+
                 tiket.total = total.toString()
-                preference.setData("total",tiket.total.toString())
+                for (getTotal in snapshot.children) {
+                    snapshot.ref.child("total").setValue(total)
+                }
+                dataRef.child(tempatAkhir).child(iUsername).setValue(tiket)
+                preference.setData("total",total.toString())
 
                 val intent = Intent(this@CheckoutActivity,SuccesAct::class.java)
                 startActivity(intent)

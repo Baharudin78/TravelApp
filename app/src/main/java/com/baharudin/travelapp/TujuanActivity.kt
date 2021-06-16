@@ -37,12 +37,20 @@ class TujuanActivity : AppCompatActivity() {
 
 
 
+        iUsername = binding.tvNamaku.text.toString()
+        tujuanAwal = binding.tvDarimana.text.toString()
+        tempatAwal = binding.tvRincian1.text.toString()
+        tujuanAkhir = binding.tvKemana.text.toString()
+        tempatAkhir = binding.tvRincian2.text.toString()
+        tanggalBerangkat = binding.tvTanggal.text.toString()
+
         preference = Preference(this)
         iKemana = binding.tvKemana.text.toString()
-        iUsername = binding.tvNamaku.text.toString()
+//        iUsername = binding.tvNamaku.text.toString()
+
         firebaseInstance = FirebaseDatabase.getInstance()
         dataRef = FirebaseDatabase.getInstance().getReference()
-        mDataRef = firebaseInstance.getReference().child("MyTicket").child(preference.getData("username")!!)
+        mDataRef = firebaseInstance.getReference().child("MyTicket").child(tujuanAkhir)
 
         binding.tvNamaku.setText(preference.getData("username"))
         binding.tvDarimana.setOnClickListener {
@@ -54,10 +62,9 @@ class TujuanActivity : AppCompatActivity() {
             val intent2 = Intent(this,DestinasiActivity::class.java)
             startActivityForResult(intent2,13)
         }
-        binding.ivBack.setOnClickListener {
-        }
 
         binding.btLanjutkan.setOnClickListener {
+
             iUsername = binding.tvNamaku.text.toString()
             tujuanAwal = binding.tvDarimana.text.toString()
             tempatAwal = binding.tvRincian1.text.toString()
@@ -129,13 +136,13 @@ class TujuanActivity : AppCompatActivity() {
         tiket.tujuanAkhir = tujuanAkhir
         tiket.tempatAkhir = tempatAkhir
         tiket.tanggal = tanggalBerangkat
-        addData(tempatAwal,tiket)
+        addData(iUsername,tiket)
     }
 
-    private fun addData(tempatAwal: String, tiket : Ticket){
-        mDataRef.child(tempatAwal).addValueEventListener(object : ValueEventListener {
+    private fun addData(iUsername: String ,tiket : Ticket){
+        mDataRef.child(iUsername).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                mDataRef.child(tempatAwal).setValue(tiket)
+                mDataRef.child(tujuanAkhir).child(iUsername).setValue(tiket)
 
                 preference.setData("username", tiket.username).toString()
                 preference.setData("tujuanAwal", tiket.tujuanAwal.toString())

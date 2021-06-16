@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
         val navigation = supportFragmentManager.findFragmentById(R.id.fr_host) as NavHostFragment
         navController = navigation.findNavController()
         binding.apply {
-            navBottom.setupWithNavController(navController)
+            bottomNavigationView.setupWithNavController(navController)
         }
     }
 

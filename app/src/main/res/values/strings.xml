@@ -25,4 +25,17 @@
     <string name="pesan_konfirmasi_bukti">
         Tolong,untuk melakukan pengungahaan bukti pembayaran untuk menyelesaikan pemesanan.
     </string>
+    <string name="kota_pilihan">Kota Pilihan</string>
+    <string name="jakarta">Jakarta</string>
+    <string name="bandung">Bandung</string>
+    <string name="bekasi">Bekasi</string>
+    <string name="tangerang">Tangerang</string>
+    <string name="batang">Batang</string>
+    <string name="semarang">Semarang</string>
+    <string name="pekalongan">Pekalongan</string>
+    <string name="cirebon">Cirebon</string>
+    <string name="sukabumi">Sukabumi</string>
+    <string name="jogja">Jogja</string>
+    <string name="malang">Malang</string>
+    <string name="surabaya">Surabaya</string>
 </resources>
