@@ -38,4 +38,7 @@
     <string name="jogja">Jogja</string>
     <string name="malang">Malang</string>
     <string name="surabaya">Surabaya</string>
+    <string name="batalkan">Batalkan pesanan ini</string>
+    <string name="nama">Nama   :</string>
+    <string name="hp">Hp   :</string>
 </resources>

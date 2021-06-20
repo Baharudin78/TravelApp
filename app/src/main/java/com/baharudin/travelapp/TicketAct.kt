@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.baharudin.travelapp.databinding.ActivityTicketBinding
-import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 
 
 class TicketAct : AppCompatActivity() {

@@ -74,8 +74,6 @@ class CheckoutActivity : AppCompatActivity() {
         dataRef.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
 
-
-
                 tiket.total = total.toString()
                 for (getTotal in snapshot.children) {
                     snapshot.ref.child("total").setValue(total)
