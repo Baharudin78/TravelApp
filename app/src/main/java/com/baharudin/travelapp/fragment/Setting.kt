@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.baharudin.travelapp.LoginActivity
+import com.baharudin.travelapp.ui.LoginActivity
 import com.baharudin.travelapp.R
 import com.baharudin.travelapp.databinding.FragmentSettingBinding
 import com.baharudin.travelapp.utils.Preference

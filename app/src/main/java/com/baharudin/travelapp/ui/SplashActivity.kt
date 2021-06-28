@@ -1,5 +1,5 @@
 
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 
 import android.content.Intent
@@ -30,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
         if (username_key.isEmpty()){
             runnable
         }else{
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finishAffinity()
         }
     }

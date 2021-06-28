@@ -1,4 +1,4 @@
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,14 +17,14 @@ class SuccesAct : AppCompatActivity() {
 
         binding.button.setOnClickListener {
             finishAffinity()
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         finishAffinity()
-        startActivity(Intent(this,HomeActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
     }
 
 }

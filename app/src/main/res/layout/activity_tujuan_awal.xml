@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient2"
-    tools:context=".TujuanAwalActivity">
+    tools:context=".ui.TujuanAwalActivity">
 
     <TextView
         android:id="@+id/textView28"

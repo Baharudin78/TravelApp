@@ -1,4 +1,4 @@
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.baharudin.travelapp.R
 import com.baharudin.travelapp.adapter.CheckoutAdapter
 import com.baharudin.travelapp.databinding.ActivityCheckoutBinding
 import com.baharudin.travelapp.model.Bus
@@ -81,7 +82,7 @@ class CheckoutActivity : AppCompatActivity() {
                 dataRef.child(tempatAkhir).child(iUsername).setValue(tiket)
                 preference.setData("total",total.toString())
 
-                val intent = Intent(this@CheckoutActivity,SuccesAct::class.java)
+                val intent = Intent(this@CheckoutActivity, SuccesAct::class.java)
                 startActivity(intent)
             }
 
@@ -103,7 +104,7 @@ class CheckoutActivity : AppCompatActivity() {
             val mChannel = NotificationChannel(NOTIFICATION_CHANELL_ID,channel_name,importance)
             notificationManager.createNotificationChannel(mChannel)
         }
-        val intent = Intent(this,TicketAct::class.java)
+        val intent = Intent(this, TicketAct::class.java)
         val bundle = Bundle()
         bundle.putParcelable("data",datas)
         intent.putExtras(bundle)

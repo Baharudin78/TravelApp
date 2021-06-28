@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.baharudin.travelapp.LoginActivity
+import com.baharudin.travelapp.ui.LoginActivity
 import com.baharudin.travelapp.R
 import com.baharudin.travelapp.databinding.FragmentThirdScreenBinding
 
@@ -21,7 +21,7 @@ class ThirdScreen : Fragment(R.layout.fragment_third_screen) {
             viewPager?.currentItem = 3
         }
         binding.tvNext3.setOnClickListener {
-            startActivity(Intent(activity,LoginActivity::class.java) )
+            startActivity(Intent(activity, LoginActivity::class.java) )
         }
     }
 

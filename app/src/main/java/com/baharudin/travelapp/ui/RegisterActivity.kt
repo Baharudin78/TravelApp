@@ -1,4 +1,4 @@
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

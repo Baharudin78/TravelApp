@@ -1,4 +1,4 @@
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         preference.setData("onboarding1","1")
         if (preference.getData("status").equals("1")){
             finishAffinity()
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
 
         binding.btMasuk.setOnClickListener {
@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
         binding.btDaftar.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
     private fun getUser(iUsername : String, iPassword : String){

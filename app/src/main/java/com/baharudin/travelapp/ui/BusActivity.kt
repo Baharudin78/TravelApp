@@ -1,4 +1,4 @@
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -52,7 +52,7 @@ class BusActivity : AppCompatActivity() {
                     dataList.add(travel!!)
                 }
                 binding.rvDaftarMobil.adapter = BusAdaptor(dataList){
-                    val intent = Intent(this@BusActivity,KursiActivity::class.java)
+                    val intent = Intent(this@BusActivity, KursiActivity::class.java)
                     intent.putExtra("data1",it)
                     startActivity(intent)
                 }

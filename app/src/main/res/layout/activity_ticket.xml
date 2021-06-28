@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorGrey"
-    tools:context=".TicketAct">
+    tools:context=".ui.TicketAct">
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
@@ -116,6 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -126,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="50dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toStartOf="@+id/imageView15"
                 app:layout_constraintStart_toEndOf="@+id/imageView14"
@@ -137,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toStartOf="@+id/tv_kemana"
                 app:layout_constraintStart_toEndOf="@+id/tv_darimana"
@@ -149,10 +150,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="50dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView15"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_penumpang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/imageView15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -215,7 +226,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout6"
+        android:id="@+id/rl_batalkan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorWhiteBack"

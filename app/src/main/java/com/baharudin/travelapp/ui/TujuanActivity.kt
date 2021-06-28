@@ -1,4 +1,4 @@
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -55,11 +55,11 @@ class TujuanActivity : AppCompatActivity() {
         binding.tvNamaku.setText(preference.getData("username"))
         binding.tvDarimana.setOnClickListener {
             
-            val intent = Intent(this ,TujuanAwalActivity::class.java)
+            val intent = Intent(this , TujuanAwalActivity::class.java)
             startActivityForResult(intent, 10)
         }
         binding.tvKemana.setOnClickListener {
-            val intent2 = Intent(this,DestinasiActivity::class.java)
+            val intent2 = Intent(this, DestinasiActivity::class.java)
             startActivityForResult(intent2,13)
         }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/colorGrey"
     android:layout_height="match_parent"
-    tools:context=".TicketDetailActivity">
+    tools:context=".ui.TicketDetailActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
@@ -312,32 +312,6 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout6"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorWhiteBack"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tv_batalkan_pesanan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/roboto"
-                android:text="Batalkan pesanan ini"
-                android:textColor="@color/colorRed"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

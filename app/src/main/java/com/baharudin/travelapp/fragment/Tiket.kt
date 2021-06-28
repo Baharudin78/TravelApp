@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.baharudin.travelapp.R
-import com.baharudin.travelapp.TicketDetailActivity
+import com.baharudin.travelapp.ui.TicketDetailActivity
 import com.baharudin.travelapp.databinding.FragmentTiketBinding
 import com.baharudin.travelapp.utils.Preference
 import com.google.firebase.database.DatabaseReference
@@ -27,7 +27,7 @@ class Tiket : Fragment(R.layout.fragment_tiket) {
         dataRef = FirebaseDatabase.getInstance().getReference("MyTicket")
 
         binding.ivBandung.setOnClickListener {
-            val goBandung = Intent(requireContext(),TicketDetailActivity::class.java)
+            val goBandung = Intent(requireContext(), TicketDetailActivity::class.java)
             goBandung.putExtra("data_tiket","Bandung")
             startActivity(goBandung)
         }

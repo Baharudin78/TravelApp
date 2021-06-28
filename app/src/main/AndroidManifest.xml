@@ -24,22 +24,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TicketDetailActivity" />
-        <activity android:name=".RestoActivity" />
-        <activity android:name=".TujuanActivity" />
-        <activity android:name=".SuccesAct" />
-        <activity android:name=".TicketAct" />
-        <activity android:name=".DestinasiActivity" />
-        <activity android:name=".TujuanAwalActivity" />
-        <activity android:name=".CheckoutActivity" />
-        <activity android:name=".KursiActivity" />
-        <activity android:name=".BusActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".PhotoActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".ui.TicketDetailActivity" />
+        <activity android:name=".ui.RestoActivity" />
+        <activity android:name=".ui.TujuanActivity" />
+        <activity android:name=".ui.SuccesAct" />
+        <activity android:name=".ui.TicketAct" />
+        <activity android:name=".ui.DestinasiActivity" />
+        <activity android:name=".ui.TujuanAwalActivity" />
+        <activity android:name=".ui.CheckoutActivity" />
+        <activity android:name=".ui.KursiActivity" />
+        <activity android:name=".ui.BusActivity" />
+        <activity android:name=".ui.HomeActivity" />
+        <activity android:name=".ui.PhotoActivity" />
+        <activity android:name=".ui.RegisterActivity" />
+        <activity android:name=".ui.LoginActivity" />
         <activity android:name=".onboarding.OnbardingAct" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

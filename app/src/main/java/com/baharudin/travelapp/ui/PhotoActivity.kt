@@ -1,4 +1,4 @@
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.baharudin.travelapp.R
 import com.baharudin.travelapp.databinding.ActivityPhotoBinding
 import com.baharudin.travelapp.model.Users
 import com.baharudin.travelapp.utils.Preference
@@ -65,7 +66,7 @@ class PhotoActivity : AppCompatActivity() {
         }
         binding.btLewatiFoto.setOnClickListener {
             finishAffinity()
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
         binding.btSaveFoto.setOnClickListener {
             if (filePath != null){
@@ -114,7 +115,7 @@ class PhotoActivity : AppCompatActivity() {
                 preference.setData("status","1")
                 preference.setData("foto",url)
                 finishAffinity()
-                startActivity(Intent(this@PhotoActivity,HomeActivity::class.java))
+                startActivity(Intent(this@PhotoActivity, HomeActivity::class.java))
             }
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@PhotoActivity, error.message, Toast.LENGTH_SHORT).show()

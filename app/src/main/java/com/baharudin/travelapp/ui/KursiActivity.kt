@@ -1,14 +1,14 @@
-package com.baharudin.travelapp
+package com.baharudin.travelapp.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.baharudin.travelapp.R
 import com.baharudin.travelapp.databinding.ActivityKursiBinding
 import com.baharudin.travelapp.model.Bus
 import com.baharudin.travelapp.model.Ticket
 import com.baharudin.travelapp.utils.Preference
-import com.google.firebase.database.*
 
 class KursiActivity : AppCompatActivity() {
 
