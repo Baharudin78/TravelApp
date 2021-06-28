@@ -51,6 +51,7 @@ class TicketAct : AppCompatActivity() {
                 .setPositiveButton("Oke"
                 ) {dialog , which ->
                     deleteTiket()
+                    finishAffinity()
                     val intent = Intent(this@TicketAct,HomeActivity::class.java)
                     startActivity(intent)
                 }
@@ -92,8 +93,6 @@ class TicketAct : AppCompatActivity() {
         dataRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 dataRef.ref.removeValue()
-
-
             }
 
             override fun onCancelled(error: DatabaseError) {
