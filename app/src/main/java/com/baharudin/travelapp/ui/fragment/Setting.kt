@@ -1,4 +1,4 @@
-package com.baharudin.travelapp.fragment
+package com.baharudin.travelapp.ui.fragment
 
 import android.app.AlertDialog
 import android.content.Intent

@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/dashboard"
-        android:name="com.baharudin.travelapp.fragment.Dashboard"
+        android:name="com.baharudin.travelapp.ui.fragment.Dashboard"
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/tiket"
-        android:name="com.baharudin.travelapp.fragment.Tiket"
+        android:name="com.baharudin.travelapp.ui.fragment.Tiket"
         android:label="Tiket"
         tools:layout="@layout/fragment_tiket" />
     <fragment
         android:id="@+id/setting2"
-        android:name="com.baharudin.travelapp.fragment.Setting"
+        android:name="com.baharudin.travelapp.ui.fragment.Setting"
         android:label="Setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>

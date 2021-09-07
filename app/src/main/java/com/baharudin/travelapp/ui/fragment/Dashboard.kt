@@ -1,4 +1,4 @@
-package com.baharudin.travelapp.fragment
+package com.baharudin.travelapp.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import com.baharudin.travelapp.R
 import com.baharudin.travelapp.ui.RestoActivity
 import com.baharudin.travelapp.ui.TujuanActivity
 import com.baharudin.travelapp.databinding.FragmentDashboardBinding
+import com.baharudin.travelapp.ui.SopirActivity
 import com.baharudin.travelapp.utils.Preference
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -48,6 +49,10 @@ class Dashboard : Fragment(R.layout.fragment_dashboard) {
         }
         binding.ivFood.setOnClickListener {
             val intent = Intent(requireContext(), RestoActivity::class.java)
+            startActivity(intent)
+        }
+        binding.ivInfo.setOnClickListener {
+            val intent = Intent(requireContext(), SopirActivity::class.java)
             startActivity(intent)
         }
 

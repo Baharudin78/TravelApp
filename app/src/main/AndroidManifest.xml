@@ -12,6 +12,10 @@
     <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
 
+    <queries>
+        <package android:name="com.whatsapp" />
+    </queries>
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -24,6 +28,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.SopirActivity"
+            android:exported="true" />
         <activity android:name=".ui.TicketDetailActivity" />
         <activity android:name=".ui.RestoActivity" />
         <activity android:name=".ui.TujuanActivity" />

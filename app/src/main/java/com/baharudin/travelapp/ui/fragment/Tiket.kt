@@ -1,4 +1,4 @@
-package com.baharudin.travelapp.fragment
+package com.baharudin.travelapp.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
